@@ -7,6 +7,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
+// Nome da Classe: Usuarios
+
 namespace EstoqueEsteticaSenac.Class
 {
     public class Usuarios
