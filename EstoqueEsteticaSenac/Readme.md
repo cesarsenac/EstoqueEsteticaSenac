@@ -28,4 +28,4 @@ Esse sistema esta disponivel para download na forma.
 Fique a vontade para modifica-lo, e utiliza-lo da melhor forma possivel, desde que sejam respeitadas as
 licenças da Microsoft (como .NET Framework, etc) e demais tecnologias envolvidas.
 
-em caso de duvidas entre em contato atraves do email: cesar <dot> aoliveira <arroba> sp <dot> senac <dot> br
+Em caso de duvidas entre em contato atraves do email: cesar [dot] aoliveira [at] sp [dot] senac [dot] br
