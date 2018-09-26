@@ -20,7 +20,7 @@ namespace EstoqueEsteticaSenac.Classes
             SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
 
             //2) fazer o SQL que vai para o banco
-            SqlCommand cmd = new SqlCommand("insert into EntradaEstoque1 (Quantidade, DataEntrada, DataVencimento) values( '"+Quantidade+ "', '"+DataEntrada+ "', '"+DataVencimento+"')", string_conexao);
+            SqlCommand cmd = new SqlCommand("insert into EntradaEstoque (Quantidade, DataEntrada, DataVencimento) values( '"+Quantidade+ "', '"+DataEntrada+ "', '"+DataVencimento+"')", string_conexao);
 
             try
             {
@@ -43,7 +43,7 @@ namespace EstoqueEsteticaSenac.Classes
         public bool Excluir(int CodigoProduto)
         {
             SqlConnection string_conexao = new SqlConnection(Properties.Resources.string_conexao);
-            SqlCommand cmd = new SqlCommand("delete from EntradaEstoque1 where CodigoProduto  = " +CodigoProduto, string_conexao);
+            SqlCommand cmd = new SqlCommand("delete from EntradaEstoque where CodigoProduto  = " +CodigoProduto, string_conexao);
             try
             {
                 string_conexao.Open();
@@ -61,7 +61,7 @@ namespace EstoqueEsteticaSenac.Classes
         public bool Alterar(int CodigoProduto, int Quantidade, int DataEntrada, int DataVencimento)
         {
             SqlConnection string_conexao = new SqlConnection(Properties.Resources.string_conexao);
-            SqlCommand cmd = new SqlCommand("UPDATE EntradaEstoque1 SET Quantidade = '" +Quantidade+ "', DataEntrada = '" +DataEntrada+ "', DataVencimento = '" +DataVencimento+ "' WHERE CodigoProduto = "+CodigoProduto, string_conexao);
+            SqlCommand cmd = new SqlCommand("UPDATE EntradaEstoque SET Quantidade = '" +Quantidade+ "', DataEntrada = '" +DataEntrada+ "', DataVencimento = '" +DataVencimento+ "' WHERE CodigoProduto = "+CodigoProduto, string_conexao);
             try
             {
                 string_conexao.Open();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProduto));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,8 +46,20 @@
             this.textBoxObservacoes = new System.Windows.Forms.TextBox();
             this.dataGridViewProduto = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.estoqueEsteticaDataSet = new EstoqueEsteticaSenac.EstoqueEsteticaDataSet();
+            this.produtosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.produtosTableAdapter = new EstoqueEsteticaSenac.EstoqueEsteticaDataSetTableAdapters.ProdutosTableAdapter();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marcaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.marcaTableAdapter = new EstoqueEsteticaSenac.EstoqueEsteticaDataSetTableAdapters.MarcaTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProduto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueEsteticaDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marcaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -92,14 +105,14 @@
             this.textBoxProduto.Location = new System.Drawing.Point(79, 46);
             this.textBoxProduto.Name = "textBoxProduto";
             this.textBoxProduto.Size = new System.Drawing.Size(205, 20);
-            this.textBoxProduto.TabIndex = 5;
+            this.textBoxProduto.TabIndex = 1;
             // 
             // buttonDeletar
             // 
             this.buttonDeletar.Location = new System.Drawing.Point(360, 246);
             this.buttonDeletar.Name = "buttonDeletar";
             this.buttonDeletar.Size = new System.Drawing.Size(75, 23);
-            this.buttonDeletar.TabIndex = 7;
+            this.buttonDeletar.TabIndex = 6;
             this.buttonDeletar.Text = "Deletar";
             this.buttonDeletar.UseVisualStyleBackColor = true;
             this.buttonDeletar.Click += new System.EventHandler(this.ButtonDeletar_Click);
@@ -109,7 +122,7 @@
             this.buttonInserir.Location = new System.Drawing.Point(279, 246);
             this.buttonInserir.Name = "buttonInserir";
             this.buttonInserir.Size = new System.Drawing.Size(75, 23);
-            this.buttonInserir.TabIndex = 8;
+            this.buttonInserir.TabIndex = 5;
             this.buttonInserir.Text = "Inserir";
             this.buttonInserir.UseVisualStyleBackColor = true;
             this.buttonInserir.Click += new System.EventHandler(this.buttonInserir_Click_1);
@@ -119,7 +132,7 @@
             this.buttonAtualizar.Location = new System.Drawing.Point(198, 246);
             this.buttonAtualizar.Name = "buttonAtualizar";
             this.buttonAtualizar.Size = new System.Drawing.Size(75, 23);
-            this.buttonAtualizar.TabIndex = 9;
+            this.buttonAtualizar.TabIndex = 7;
             this.buttonAtualizar.Text = "Atualizar";
             this.buttonAtualizar.UseVisualStyleBackColor = true;
             this.buttonAtualizar.Click += new System.EventHandler(this.buttonAtualizar_Click);
@@ -129,18 +142,20 @@
             this.buttonPesquisar.Location = new System.Drawing.Point(117, 246);
             this.buttonPesquisar.Name = "buttonPesquisar";
             this.buttonPesquisar.Size = new System.Drawing.Size(75, 23);
-            this.buttonPesquisar.TabIndex = 10;
+            this.buttonPesquisar.TabIndex = 8;
             this.buttonPesquisar.Text = "Pesquisar";
             this.buttonPesquisar.UseVisualStyleBackColor = true;
             this.buttonPesquisar.Click += new System.EventHandler(this.buttonPesquisar_Click);
             // 
             // comboBoxMarca
             // 
+            this.comboBoxMarca.DataSource = this.marcaBindingSource;
+            this.comboBoxMarca.DisplayMember = "Nome_Marca";
             this.comboBoxMarca.FormattingEnabled = true;
             this.comboBoxMarca.Location = new System.Drawing.Point(79, 93);
             this.comboBoxMarca.Name = "comboBoxMarca";
             this.comboBoxMarca.Size = new System.Drawing.Size(205, 21);
-            this.comboBoxMarca.TabIndex = 12;
+            this.comboBoxMarca.TabIndex = 3;
             // 
             // textBoxCodigoDeBarras
             // 
@@ -148,7 +163,7 @@
             this.textBoxCodigoDeBarras.MaxLength = 13;
             this.textBoxCodigoDeBarras.Name = "textBoxCodigoDeBarras";
             this.textBoxCodigoDeBarras.Size = new System.Drawing.Size(193, 20);
-            this.textBoxCodigoDeBarras.TabIndex = 16;
+            this.textBoxCodigoDeBarras.TabIndex = 2;
             this.textBoxCodigoDeBarras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCodigoDeBarras_KeyPress);
             // 
             // label6
@@ -177,13 +192,20 @@
             this.textBoxObservacoes.Multiline = true;
             this.textBoxObservacoes.Name = "textBoxObservacoes";
             this.textBoxObservacoes.Size = new System.Drawing.Size(193, 130);
-            this.textBoxObservacoes.TabIndex = 19;
+            this.textBoxObservacoes.TabIndex = 4;
             // 
             // dataGridViewProduto
             // 
             this.dataGridViewProduto.AllowUserToAddRows = false;
             this.dataGridViewProduto.AllowUserToDeleteRows = false;
+            this.dataGridViewProduto.AutoGenerateColumns = false;
             this.dataGridViewProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewProduto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
+            this.dataGridViewProduto.DataSource = this.produtosBindingSource;
             this.dataGridViewProduto.Location = new System.Drawing.Point(44, 275);
             this.dataGridViewProduto.Name = "dataGridViewProduto";
             this.dataGridViewProduto.ReadOnly = true;
@@ -199,6 +221,57 @@
             this.pictureBox1.Size = new System.Drawing.Size(254, 103);
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
+            // 
+            // estoqueEsteticaDataSet
+            // 
+            this.estoqueEsteticaDataSet.DataSetName = "EstoqueEsteticaDataSet";
+            this.estoqueEsteticaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // produtosBindingSource
+            // 
+            this.produtosBindingSource.DataMember = "Produtos";
+            this.produtosBindingSource.DataSource = this.estoqueEsteticaDataSet;
+            // 
+            // produtosTableAdapter
+            // 
+            this.produtosTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "NomeProduto";
+            this.dataGridViewTextBoxColumn3.HeaderText = "NomeProduto";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "CodigoDeBarras";
+            this.dataGridViewTextBoxColumn4.HeaderText = "CodigoDeBarras";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Observacoes";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Observacoes";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // marcaBindingSource
+            // 
+            this.marcaBindingSource.DataMember = "Marca";
+            this.marcaBindingSource.DataSource = this.estoqueEsteticaDataSet;
+            // 
+            // marcaTableAdapter
+            // 
+            this.marcaTableAdapter.ClearBeforeFill = true;
             // 
             // FormProduto
             // 
@@ -227,6 +300,9 @@
             this.Load += new System.EventHandler(this.FormProduto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProduto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueEsteticaDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marcaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,5 +332,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeProdutoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoDeBarrasDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn observaçõesDataGridViewTextBoxColumn;
+        private EstoqueEsteticaDataSet estoqueEsteticaDataSet;
+        private System.Windows.Forms.BindingSource produtosBindingSource;
+        private EstoqueEsteticaDataSetTableAdapters.ProdutosTableAdapter produtosTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.BindingSource marcaBindingSource;
+        private EstoqueEsteticaDataSetTableAdapters.MarcaTableAdapter marcaTableAdapter;
     }
 }

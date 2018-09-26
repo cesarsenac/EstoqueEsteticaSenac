@@ -48,13 +48,9 @@
             this.maskedTextBoxDataSaida = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBoxDataVencimento = new System.Windows.Forms.MaskedTextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.codigoProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataSaidaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataVencimentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saidaEstoqueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saidaEstoque2BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.saidaEstoque2BindingSource = new System.Windows.Forms.BindingSource(this.components);            
+            this.saidaEstoque2BindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoque2BindingSource1)).BeginInit();
@@ -125,8 +121,8 @@
             // 
             this.textBoxCodigoProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxCodigoProduto.Location = new System.Drawing.Point(281, 84);
+            this.textBoxCodigoProduto.MaxLength = 13;
             this.textBoxCodigoProduto.Name = "textBoxCodigoProduto";
-            this.textBoxCodigoProduto.ReadOnly = true;
             this.textBoxCodigoProduto.Size = new System.Drawing.Size(171, 23);
             this.textBoxCodigoProduto.TabIndex = 6;
             // 
@@ -238,11 +234,6 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codigoProdutoDataGridViewTextBoxColumn,
-            this.quantidadeDataGridViewTextBoxColumn,
-            this.dataSaidaDataGridViewTextBoxColumn,
-            this.dataVencimentoDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.saidaEstoqueBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(69, 300);
             this.dataGridView1.Name = "dataGridView1";
@@ -251,40 +242,9 @@
             this.dataGridView1.TabIndex = 20;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // codigoProdutoDataGridViewTextBoxColumn
-            // 
-            this.codigoProdutoDataGridViewTextBoxColumn.DataPropertyName = "CodigoProduto";
-            this.codigoProdutoDataGridViewTextBoxColumn.HeaderText = "CodigoProduto";
-            this.codigoProdutoDataGridViewTextBoxColumn.Name = "codigoProdutoDataGridViewTextBoxColumn";
-            this.codigoProdutoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quantidadeDataGridViewTextBoxColumn
-            // 
-            this.quantidadeDataGridViewTextBoxColumn.DataPropertyName = "Quantidade";
-            this.quantidadeDataGridViewTextBoxColumn.HeaderText = "Quantidade";
-            this.quantidadeDataGridViewTextBoxColumn.Name = "quantidadeDataGridViewTextBoxColumn";
-            this.quantidadeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dataSaidaDataGridViewTextBoxColumn
-            // 
-            this.dataSaidaDataGridViewTextBoxColumn.DataPropertyName = "DataSaida";
-            this.dataSaidaDataGridViewTextBoxColumn.HeaderText = "DataSaida";
-            this.dataSaidaDataGridViewTextBoxColumn.Name = "dataSaidaDataGridViewTextBoxColumn";
-            this.dataSaidaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dataVencimentoDataGridViewTextBoxColumn
-            // 
-            this.dataVencimentoDataGridViewTextBoxColumn.DataPropertyName = "DataVencimento";
-            this.dataVencimentoDataGridViewTextBoxColumn.HeaderText = "DataVencimento";
-            this.dataVencimentoDataGridViewTextBoxColumn.Name = "dataVencimentoDataGridViewTextBoxColumn";
-            this.dataVencimentoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // saidaEstoqueBindingSource
             // 
             this.saidaEstoqueBindingSource.DataMember = "SaidaEstoque";
-            // 
-            // saidaEstoqueDataSet
-            // 
             // 
             // saidaEstoque2BindingSource1
             // 
@@ -293,9 +253,6 @@
             // saidaEstoque2BindingSource
             // 
             this.saidaEstoque2BindingSource.DataMember = "SaidaEstoque2";
-            // 
-            // saidaEstoqueTableAdapter
-            // 
             // 
             // FormSaidaProduto
             // 
@@ -330,8 +287,8 @@
             this.Load += new System.EventHandler(this.FormSaidaProduto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saidaEstoque2BindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saidaEstoque2BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

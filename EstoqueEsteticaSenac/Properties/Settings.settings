@@ -6,7 +6,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="string_conexao" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=.\SQLEXPRESS2017;Initial Catalog=EstoqueEstetica;User ID=sa;Password=1234567890</Value>
+      <Value Profile="(Default)">Data Source=BOT0626788W10-1\;Initial Catalog=estoqueestetica;Persist Security Info=True;User ID=sa;Password=sasenac</Value>
     </Setting>
     <Setting Name="ultimo_login" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -20,10 +20,10 @@
     <Setting Name="EstoqueEsteticaConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=.\SQLEXPRESS2017;Initial Catalog=EstoqueEstetica;User ID=sa;Password=1234567890&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=BOT0626788W10-1\;Initial Catalog=estoqueestetica;Persist Security Info=True;User ID=sa;Password=sasenac&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=.\SQLEXPRESS2017;Initial Catalog=EstoqueEstetica;User ID=sa;Password=1234567890</Value>
+      <Value Profile="(Default)">Data Source=BOT0626788W10-1\;Initial Catalog=estoqueestetica;Persist Security Info=True;User ID=sa;Password=sasenac</Value>
     </Setting>
   </Settings>
 </SettingsFile>

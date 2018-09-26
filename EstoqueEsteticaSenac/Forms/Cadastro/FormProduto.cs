@@ -20,6 +20,12 @@ namespace EstoqueEsteticaSenac.Forms
 
         private void FormProduto_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Marca' table. You can move, or remove it, as needed.
+            this.marcaTableAdapter.Fill(this.estoqueEsteticaDataSet.Marca);
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Produtos' table. You can move, or remove it, as needed.
+            this.produtosTableAdapter.Fill(this.estoqueEsteticaDataSet.Produtos);
+
+            textBoxProduto.Focus();
 
         }
 
@@ -51,13 +57,13 @@ namespace EstoqueEsteticaSenac.Forms
                     }
                     else if (resultado == 3)
                     {
-                        bool resultadoClasse = p.Inserir(textBoxProduto.Text, "", textBoxCodigoDeBarras.Text, textBoxObservacoes.Text);
+                        bool resultadoClasse = p.Inserir(textBoxProduto.Text, textBoxCodigoDeBarras.Text, textBoxObservacoes.Text);
                         if (resultadoClasse == true)
                         {
                             MessageBox.Show("Dados gravados com sucesso!", "Secesso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                             //atualiza o datagridview
-                            
+                            this.produtosTableAdapter.Fill(this.estoqueEsteticaDataSet.Produtos);
                         }
 
                         else
@@ -91,7 +97,7 @@ namespace EstoqueEsteticaSenac.Forms
                     Limpar();
 
                     //atualiza o datagridview
-                    
+                    this.produtosTableAdapter.Fill(this.estoqueEsteticaDataSet.Produtos);
                 }
 
                 else
@@ -122,7 +128,7 @@ namespace EstoqueEsteticaSenac.Forms
             else
             {
                 Produto p = new Produto();
-                bool ResultadoClasse = p.Atualizar(Convert.ToInt32(textBoxID.Text), textBoxProduto.Text, "", "", textBoxCodigoDeBarras.Text, textBoxObservacoes.Text);
+                bool ResultadoClasse = p.Atualizar(Convert.ToInt32(textBoxID.Text), textBoxProduto.Text, textBoxCodigoDeBarras.Text, textBoxObservacoes.Text);
 
                 if (ResultadoClasse == true)
                 {
@@ -131,7 +137,7 @@ namespace EstoqueEsteticaSenac.Forms
                     Limpar();
 
                     //atualiza o datagridview
-                    
+                    this.produtosTableAdapter.Fill(this.estoqueEsteticaDataSet.Produtos);
                 }
 
                 else

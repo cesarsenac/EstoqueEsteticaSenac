@@ -11,11 +11,11 @@ namespace EstoqueEsteticaSenac.Class
 {
     class Produto
     {
-        public bool Atualizar(int ID, string Produto, string DescricaoProduto, string Quantidade, string CodigoDeBarras, string Observacoes)
+        public bool Atualizar(int ID, string Produto, string CodigoDeBarras, string Observacoes)
         {
             SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
 
-            SqlCommand cmd = new SqlCommand("UPDATE Produtos SET NomeProduto = '" + Produto + "', Descricao_Produto ='" + DescricaoProduto + "', Quantidade  ='" + Quantidade + "', CodigoDeBarras ='" + CodigoDeBarras + "', Observacoes ='" + Observacoes + "' WHERE id = " + ID, string_conexao);
+            SqlCommand cmd = new SqlCommand("UPDATE Produtos SET NomeProduto = '" + Produto + "', CodigoDeBarras ='" + CodigoDeBarras + "', Observacoes ='" + Observacoes + "' WHERE id = " + ID, string_conexao);
 
             try
             {
@@ -32,11 +32,11 @@ namespace EstoqueEsteticaSenac.Class
             }
         }
 
-        public bool Inserir(string NomeProduto, string Quantidade, string CodigoDeBarras, string Observacoes)
+        public bool Inserir(string NomeProduto, string CodigoDeBarras, string Observacoes)
         {
             SqlConnection string_conexao = new SqlConnection(Properties.Resources.string_conexao);
 
-            SqlCommand cmd = new SqlCommand("INSERT INTO Produtos (NomeProduto, Quantidade, CodigoDeBarras, Observacoes) VALUES('" + NomeProduto + "', '" + Quantidade + "', '" + CodigoDeBarras + "', '" + Observacoes + "')", string_conexao);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Produtos (NomeProduto, CodigoDeBarras, Observacoes) VALUES('" + NomeProduto + "', '" + CodigoDeBarras + "', '" + Observacoes + "')", string_conexao);
 
             try
             {

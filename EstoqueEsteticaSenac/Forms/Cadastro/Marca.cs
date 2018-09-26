@@ -20,8 +20,9 @@ namespace EstoqueEsteticaSenac.Forms
 
         private void Marca_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Marca' table. You can move, or remove it, as needed.
+            this.marcaTableAdapter.Fill(this.estoqueEsteticaDataSet.Marca);
 
-            
         }
 
         private void buttonInserir_Click(object sender, EventArgs e)
@@ -50,7 +51,7 @@ namespace EstoqueEsteticaSenac.Forms
                         textBoxMarca.Text = "";
                         textBoxObservacao.Text = "";
 
-                        
+                        this.marcaTableAdapter.Fill(this.estoqueEsteticaDataSet.Marca);
                     }
                     else
                     {
@@ -79,7 +80,7 @@ namespace EstoqueEsteticaSenac.Forms
                     textBoxMarca.Text = "";
                     textBoxObservacao.Text = "";
 
-                    
+                    this.marcaTableAdapter.Fill(this.estoqueEsteticaDataSet.Marca);
                 }
                 else
                 {
@@ -109,7 +110,7 @@ namespace EstoqueEsteticaSenac.Forms
                     textBoxMarca.Text = "";
                     textBoxObservacao.Text = "";
 
-                    
+                    this.marcaTableAdapter.Fill(this.estoqueEsteticaDataSet.Marca);
                 }
                 else
                 {

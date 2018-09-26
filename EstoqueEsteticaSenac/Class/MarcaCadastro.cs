@@ -14,7 +14,7 @@ namespace EstoqueEsteticaSenac.Class
         {
             SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
 
-            SqlCommand cmd = new SqlCommand("insert into Tbl_Marca(Nome_Marca, Observacao_Marca) values('"+ marca +"', '"+ observacao +"')", string_conexao);
+            SqlCommand cmd = new SqlCommand("insert into Marca(Nome_Marca, Observacao_Marca) values('"+ marca +"', '"+ observacao +"')", string_conexao);
 
             try
             {
@@ -38,7 +38,7 @@ namespace EstoqueEsteticaSenac.Class
         {
             SqlConnection string_conexao = new SqlConnection(Properties.Resources.string_conexao);
 
-            SqlCommand cmd = new SqlCommand("Delete from Tbl_Marca where ID_Marca ="+ ID, string_conexao);
+            SqlCommand cmd = new SqlCommand("Delete from Marca where ID_Marca ="+ ID, string_conexao);
 
             try
             {
@@ -62,7 +62,7 @@ namespace EstoqueEsteticaSenac.Class
         {
             SqlConnection string_conexao = new SqlConnection(Properties.Resources.string_conexao);
 
-            SqlCommand cmd = new SqlCommand("UPDATE Tbl_Marca SET Nome_Marca = '" + marca + "', Observacao_Marca = '" + observacao +"'Where ID_Marca = "+ID, string_conexao);
+            SqlCommand cmd = new SqlCommand("UPDATE Marca SET Nome_Marca = '" + marca + "', Observacao_Marca = '" + observacao +"'Where ID_Marca = "+ID, string_conexao);
 
             try
             {
@@ -85,7 +85,7 @@ namespace EstoqueEsteticaSenac.Class
         public bool MarcaExiste(string marca)
         {
             SqlConnection conexao = new SqlConnection(Properties.Resources.string_conexao);
-            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Tbl_Marca WHERE Nome_Marca = '"+marca+"'", conexao);
+            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Marca WHERE Nome_Marca = '"+marca+"'", conexao);
 
             try
             {
