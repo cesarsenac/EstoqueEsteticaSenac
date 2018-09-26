@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,12 +48,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\EntradaEstoque.cs" />
+    <Compile Include="Class\MarcaCadastro.cs" />
+    <Compile Include="Class\Produto.cs" />
+    <Compile Include="Class\SaidaEstoque.cs" />
     <Compile Include="Class\Usuarios.cs" />
+    <Compile Include="EstoqueEsteticaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EstoqueEsteticaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cadastro\FormProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cadastro\FormProduto.designer.cs">
+      <DependentUpon>FormProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Cadastro\FormUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Cadastro\FormUsuario.Designer.cs">
       <DependentUpon>FormUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cadastro\Marca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cadastro\Marca.Designer.cs">
+      <DependentUpon>Marca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Configurações\FormNovaSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configurações\FormNovaSenha.Designer.cs">
+      <DependentUpon>FormNovaSenha.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Estoque\FormEntradaProduto.cs">
       <SubType>Form</SubType>
@@ -102,8 +132,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Cadastro\FormProduto.resx">
+      <DependentUpon>FormProduto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Cadastro\FormUsuario.resx">
       <DependentUpon>FormUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cadastro\Marca.resx">
+      <DependentUpon>Marca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configurações\FormNovaSenha.resx">
+      <DependentUpon>FormNovaSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Estoque\FormEntradaProduto.resx">
+      <DependentUpon>FormEntradaProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Estoque\FormSaidaProduto.resx">
+      <DependentUpon>FormSaidaProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
@@ -124,6 +169,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="EstoqueEsteticaDataSet.xsc">
+      <DependentUpon>EstoqueEsteticaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="EstoqueEsteticaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EstoqueEsteticaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="EstoqueEsteticaDataSet.xss">
+      <DependentUpon>EstoqueEsteticaDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -139,12 +195,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\Configurações\" />
     <Folder Include="Forms\Relatorios\Movimento\" />
     <Folder Include="Forms\Relatorios\Produto\" />
     <Folder Include="Forms\Relatorios\Vencidos\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EstoqueEsteticaSenacDB.sql" />
+    <Content Include="icon.ico" />
     <Content Include="Images\about_team.gif" />
     <Content Include="Images\icon.ico" />
     <Content Include="Images\icon.png" />

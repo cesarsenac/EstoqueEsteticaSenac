@@ -57,7 +57,7 @@
             this.venToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trocarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelNomeUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
@@ -71,7 +71,7 @@
             this.estoqueToolStripMenuItem,
             this.relatoriosToolStripMenuItem,
             this.configuraçõesToolStripMenuItem,
-            this.sairToolStripMenuItem});
+            this.trocarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -93,20 +93,21 @@
             // produtosToolStripMenuItem1
             // 
             this.produtosToolStripMenuItem1.Name = "produtosToolStripMenuItem1";
-            this.produtosToolStripMenuItem1.Size = new System.Drawing.Size(136, 26);
+            this.produtosToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
             this.produtosToolStripMenuItem1.Text = "Produto";
             this.produtosToolStripMenuItem1.Click += new System.EventHandler(this.produtosToolStripMenuItem1_Click);
             // 
             // marcasToolStripMenuItem
             // 
             this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
-            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.marcasToolStripMenuItem.Text = "Marca";
+            this.marcasToolStripMenuItem.Click += new System.EventHandler(this.marcasToolStripMenuItem_Click);
             // 
             // usuáriosToolStripMenuItem
             // 
             this.usuáriosToolStripMenuItem.Name = "usuáriosToolStripMenuItem";
-            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.usuáriosToolStripMenuItem.Text = "Usuário";
             this.usuáriosToolStripMenuItem.Click += new System.EventHandler(this.usuáriosToolStripMenuItem_Click);
             // 
@@ -133,12 +134,14 @@
             this.entradaDeProdutosToolStripMenuItem.Name = "entradaDeProdutosToolStripMenuItem";
             this.entradaDeProdutosToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
             this.entradaDeProdutosToolStripMenuItem.Text = "Entrada de Produtos";
+            this.entradaDeProdutosToolStripMenuItem.Click += new System.EventHandler(this.entradaDeProdutosToolStripMenuItem_Click);
             // 
             // saidaBaixaDeProdutosToolStripMenuItem
             // 
             this.saidaBaixaDeProdutosToolStripMenuItem.Name = "saidaBaixaDeProdutosToolStripMenuItem";
             this.saidaBaixaDeProdutosToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
             this.saidaBaixaDeProdutosToolStripMenuItem.Text = "Saida/Baixa de Produtos";
+            this.saidaBaixaDeProdutosToolStripMenuItem.Click += new System.EventHandler(this.saidaBaixaDeProdutosToolStripMenuItem_Click);
             // 
             // vencidosToolStripMenuItem
             // 
@@ -278,13 +281,13 @@
             this.sobreToolStripMenuItem.Size = new System.Drawing.Size(121, 26);
             this.sobreToolStripMenuItem.Text = "Sobre";
             // 
-            // sairToolStripMenuItem
+            // trocarToolStripMenuItem
             // 
-            this.sairToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(49, 25);
-            this.sairToolStripMenuItem.Text = "Sair";
-            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
+            this.trocarToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.trocarToolStripMenuItem.Name = "trocarToolStripMenuItem";
+            this.trocarToolStripMenuItem.Size = new System.Drawing.Size(123, 25);
+            this.trocarToolStripMenuItem.Text = "Trocar Usuário";
+            this.trocarToolStripMenuItem.Click += new System.EventHandler(this.trocarToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -298,9 +301,9 @@
             // 
             // toolStripStatusLabelNomeUsuario
             // 
+            this.toolStripStatusLabelNomeUsuario.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.toolStripStatusLabelNomeUsuario.Name = "toolStripStatusLabelNomeUsuario";
-            this.toolStripStatusLabelNomeUsuario.Size = new System.Drawing.Size(70, 17);
-            this.toolStripStatusLabelNomeUsuario.Text = "Bem vindo, ";
+            this.toolStripStatusLabelNomeUsuario.Size = new System.Drawing.Size(0, 17);
             // 
             // FormPrincipal
             // 
@@ -318,7 +321,7 @@
             this.Name = "FormPrincipal";
             this.Text = "Estoque Estetica Senac";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormPrincipal_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.FormPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -338,7 +341,7 @@
         private System.Windows.Forms.ToolStripMenuItem produtosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem marcasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuáriosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem trocarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem posiçãoDeEstoqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem entradaDeProdutosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saidaBaixaDeProdutosToolStripMenuItem;

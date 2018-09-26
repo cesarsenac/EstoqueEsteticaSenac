@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EstoqueEsteticaSenac.Classes;
 
 namespace EstoqueEsteticaSenac.Forms.Estoque
 {
@@ -15,6 +16,164 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
         public FormSaidaProduto()
         {
             InitializeComponent();
+        }
+
+        private void buttonInserir_Click(object sender, EventArgs e)
+        {
+            if
+               (String.IsNullOrEmpty(textBoxProduto.Text) ||
+                String.IsNullOrEmpty(textBoxMarca.Text) ||
+                String.IsNullOrEmpty(textBoxQuantidade.Text) ||
+                String.IsNullOrEmpty(maskedTextBoxDataSaida.Text) ||
+                String.IsNullOrEmpty(maskedTextBoxDataVencimento.Text)
+               )
+            {
+                MessageBox.Show("Preencha os campos em branco!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                SaidaEstoque s = new SaidaEstoque();
+                maskedTextBoxDataSaida.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+                string DataSaida = maskedTextBoxDataSaida.Text;
+
+                maskedTextBoxDataVencimento.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+                string DataVencimento = maskedTextBoxDataVencimento.Text;
+
+                MessageBox.Show("Codigo: " + textBoxCodigoProduto.Text + "\n Quantidade: " + textBoxQuantidade.Text + "\n Saida: " + maskedTextBoxDataSaida.Text + " \n Vencimento: " + maskedTextBoxDataVencimento.Text);
+                bool resultadoClasse = s.Inserir(Convert.ToInt32(textBoxQuantidade.Text), Convert.ToInt32(DataSaida), Convert.ToInt32(DataVencimento));
+
+
+                if (resultadoClasse == true)
+                {
+                    MessageBox.Show("Dados inseridos com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    //textBoxCodigoProduto.Text = "";
+                    //maskedTextBoxDataSaida.Text = "";
+                    //maskedTextBoxDataVencimento.Text = "";
+
+                    //Atualiza o datagridview
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao inserir os dados", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    System.Windows.Forms.MessageBox.Show("ERRO:\n" + e);
+                }
+            }
+
+        }
+
+        private void buttonExcluir_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBoxCodigoProduto.Text) ||
+                String.IsNullOrEmpty(maskedTextBoxDataSaida.Text) ||
+                String.IsNullOrEmpty(maskedTextBoxDataVencimento.Text)
+             )
+            {
+                MessageBox.Show("Não deixe os campos em branco", "AVISO", MessageBoxButtons.OK
+                    , MessageBoxIcon.Information);
+            }
+            else
+            {
+                SaidaEstoque s = new SaidaEstoque();
+                maskedTextBoxDataSaida.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+                string dataEntrada = maskedTextBoxDataSaida.Text;
+
+                maskedTextBoxDataVencimento.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+                string vencimento = maskedTextBoxDataVencimento.Text;
+
+                bool resultadoClasse = s.Excluir(Convert.ToInt32(textBoxCodigoProduto.Text));
+
+                if (resultadoClasse == true)
+                {
+                    MessageBox.Show("Dados excluidos com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    textBoxCodigoProduto.Text = "";
+                    maskedTextBoxDataSaida.Text = "";
+                    maskedTextBoxDataVencimento.Text = "";
+
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao excluir os dados", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("Tem certeza que deseja sair?", "Tem certeza?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (resultado == DialogResult.Yes)
+                this.Close();
+        }
+
+        private void FormSaidaProduto_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxCodigoProduto.Text = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            textBoxQuantidade.Text = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            maskedTextBoxDataSaida.Text = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            maskedTextBoxDataVencimento.Text = this.dataGridView1.CurrentRow.Cells[3].Value.ToString();
+        }
+
+        private void buttonAlterar_Click_1(object sender, EventArgs e)
+        {
+            if
+              (String.IsNullOrEmpty(textBoxQuantidade.Text) ||
+               String.IsNullOrEmpty(maskedTextBoxDataSaida.Text) ||
+               String.IsNullOrEmpty(maskedTextBoxDataVencimento.Text)
+              )
+            {
+                MessageBox.Show("Preencha os campos em branco!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                SaidaEstoque s = new SaidaEstoque();
+                maskedTextBoxDataSaida.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+                string DataSaida = maskedTextBoxDataSaida.Text;
+
+                maskedTextBoxDataVencimento.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+                string DataVencimento = maskedTextBoxDataVencimento.Text;
+
+                MessageBox.Show("Codigo: " + textBoxCodigoProduto.Text + "\n Quantidade: " + textBoxQuantidade.Text + "\n Saida: " + maskedTextBoxDataSaida.Text + " \n Vencimento: " + maskedTextBoxDataVencimento.Text);
+                bool resultadoClasse = s.Alterar(Convert.ToInt32(textBoxCodigoProduto.Text), Convert.ToInt32(textBoxQuantidade.Text), Convert.ToInt32(DataSaida), Convert.ToInt32(DataVencimento));
+
+                if (resultadoClasse == true)
+                {
+                    MessageBox.Show("Dados alterados com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    textBoxProduto.Text = "";
+                    textBoxMarca.Text = "";
+                    textBoxQuantidade.Text = "";
+                    maskedTextBoxDataSaida.Text = "";
+                    maskedTextBoxDataVencimento.Text = "";
+
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao alterar os dados", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void textBoxQuantidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
+            {
+                MessageBox.Show("Não digite letras ou espaços no espaço quantidade!");
+            }
+        }
+
+        private void textBoxProduto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13) //Pessoa digitou enter
+            {
+                maskedTextBoxDataSaida.Text = Convert.ToString(DateTime.Now);
+                textBoxQuantidade.Focus();
+            }
         }
     }
 }

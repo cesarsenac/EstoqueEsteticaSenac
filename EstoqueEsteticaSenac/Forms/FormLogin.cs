@@ -33,13 +33,12 @@ namespace EstoqueEsteticaSenac.Forms
             }
             else
             {
-                string senha = textBoxSenha.Text;
-                senha = Convert.ToString(senha.GetHashCode());
                 Usuarios u = new Usuarios();
-                bool resultado = u.Login(textBoxLogin.Text, senha);
+                bool resultado = u.Login(textBoxLogin.Text, textBoxSenha.Text);
                 if (resultado == true)
                 {
                     this.Hide();
+                    Properties.Settings.Default.login_atual = Convert.ToString(DateTime.Now);
                     FormPrincipal p = new FormPrincipal();
                     p.Show();
                 }
@@ -48,6 +47,11 @@ namespace EstoqueEsteticaSenac.Forms
                     MessageBox.Show("Login e/ou senha Incorretos", "Erro ao Logar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
