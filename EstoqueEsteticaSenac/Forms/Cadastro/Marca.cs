@@ -37,7 +37,7 @@ namespace EstoqueEsteticaSenac.Forms
                 bool resultado = m.MarcaExiste(textBoxMarca.Text);
                 if (resultado == true)
                 {
-                    MessageBox.Show("A marca " + textBoxMarca.Text + "já existe");
+                    MessageBox.Show("A marca " + textBoxMarca.Text + " já existe","Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {

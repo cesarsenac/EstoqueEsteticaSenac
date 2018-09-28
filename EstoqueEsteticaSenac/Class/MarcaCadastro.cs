@@ -6,6 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//Nome da Classe: MarcaCadastro
+//Desenvolvido por: Mateus Justino da Rocha - mateusjrocha.ruim@gmail.com
+//Data: 26/09/2018
+//Descrição da classe: Esta clase foi criada para realizar o cadastro de marca, e controlar o Marca
+
+//      Metodos:
+//          - Inserir: Faz a inserção de uma marca ao banco (Pronto)
+//          - Atualizar: Faz a atualização de uma marca no banco (Pronto)
+//          - Deletar: Faz a deleção de uma marca no banco (Pronto)
+//          - Pesquisar: Faz a pesquisa de uma marca no banco (em desenvolvimento)
+//          - MarcaExiste: Confere se a marca a ser cadastrada existe, caso existir nao podera ser cadastrado (Pronta) 
+
 namespace EstoqueEsteticaSenac.Class
 {
     class MarcaCadastro
@@ -36,7 +48,7 @@ namespace EstoqueEsteticaSenac.Class
 
         public bool Deletar(int ID)
         {
-            SqlConnection string_conexao = new SqlConnection(Properties.Resources.string_conexao);
+            SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
 
             SqlCommand cmd = new SqlCommand("Delete from Marca where ID_Marca ="+ ID, string_conexao);
 
@@ -60,7 +72,7 @@ namespace EstoqueEsteticaSenac.Class
 
         public bool Atualizar(int ID, string marca, string observacao)
         {
-            SqlConnection string_conexao = new SqlConnection(Properties.Resources.string_conexao);
+            SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
 
             SqlCommand cmd = new SqlCommand("UPDATE Marca SET Nome_Marca = '" + marca + "', Observacao_Marca = '" + observacao +"'Where ID_Marca = "+ID, string_conexao);
 
@@ -84,7 +96,7 @@ namespace EstoqueEsteticaSenac.Class
 
         public bool MarcaExiste(string marca)
         {
-            SqlConnection conexao = new SqlConnection(Properties.Resources.string_conexao);
+            SqlConnection conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
             SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Marca WHERE Nome_Marca = '"+marca+"'", conexao);
 
             try
