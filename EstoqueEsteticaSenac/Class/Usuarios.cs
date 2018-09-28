@@ -7,8 +7,19 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-// Nome da Classe: Usuarios
-// Desenvolvido por: Cesar Oliveira Jr (oliveiraugusto)
+//Nome da classe: Produtos
+//Desenvolvido Por: Cesar Oliveira Jr (oliveiraugusto) - cesar.aoliveira@sp.senac.br
+//DATA: 26/09/2018
+//Descrição da classe: Classe feita para o Acesso e controle de ususarios do sistema EstoqueEstetica
+//          METODOS: 
+//              - Login: Verifica Usuario e Senha para acesso ao sistema (pronta)
+//              - InserirUsuario: Insere usuario no banco de dados (pronta)
+//              - AtualizaUsuario: Atualiza os dados do Usuario no banco de dados (pronta)
+//              - DeletaUsuario: Atualiza os dados do Usuario no banco de dados (pronta)
+//              - PesquisarUsuario: Pesquisa um usuario no banco de dados (em desenvolvimento)
+//              - LoginOuEmailExistente: sub-metodo do Inserirusuario, verifica se o Login ou Email ja foi cadastrado no banco de dados (pronta)
+//              - SalvarEstadoUsuario: salva os dados das variaveis globais do sistema no banco de dados (pronta)
+
 
 namespace EstoqueEsteticaSenac.Class
 {
