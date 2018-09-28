@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 
 // Nome da Classe: Usuarios
+// Desenvolvido por: Cesar Oliveira Jr (oliveiraugusto)
 
 namespace EstoqueEsteticaSenac.Class
 {
