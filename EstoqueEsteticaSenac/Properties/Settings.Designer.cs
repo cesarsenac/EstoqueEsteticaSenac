@@ -37,8 +37,8 @@ namespace EstoqueEsteticaSenac.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=BOT0626788W10-1;Initial Catalog=estoqueestetica;Persist Security Info" +
-            "=True;User ID=sa;Password=sasenac")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=BOT0626788W10-1;Initial Catalog=estoqueestetica;Persist Security Inf" +
+            "o=True;User ID=sa;Password=sasenac")]
         public string string_conexao {
             get {
                 return ((string)(this["string_conexao"]));
@@ -84,8 +84,8 @@ namespace EstoqueEsteticaSenac.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=BOT0626788W10-1;Initial Catalog=estoqueestetica;Persist Security Info" +
-            "=True;User ID=sa;Password=sasenac")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=BOT0626788W10-1\\;Initial Catalog=estoqueestetica;Persist Security Inf" +
+            "o=True;User ID=sa;Password=sasenac")]
         public string EstoqueEsteticaConnectionString {
             get {
                 return ((string)(this["EstoqueEsteticaConnectionString"]));

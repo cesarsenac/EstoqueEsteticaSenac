@@ -7,15 +7,26 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
 
+//Nome da classe: Produtos
+//Desenvolvido Por: Victor Hugo Corrêa - ometaleiro696@gmail.com
+//DATA: 26/09/2018
+//Descrição da classe: Esta classe foi  construida para a adminstração dos produtos do curso Estetica do Senac Botucatu
+//          METODOS: 
+//              - Inserir: Faz a inserção do produto no banco (PRONTA) 
+//              - Atualizar: Faz a atualização dos dados do produto no banco (PRONTA)
+//              - Deletar: Faz a deleção do produto no banco (PRONTA)
+//              - Pesquisar: Faz a pesquisa de um produto no banco de dados (EM DESENVOLVIMENTO)
+//              - ProdutoExistente: Sub-Metodo do Inserir, para vericar se há um produto de mesmo nome ou mesmo codigo de barrras no banco (PRONTA)
+
 namespace EstoqueEsteticaSenac.Class
 {
     class Produto
     {
-        public bool Atualizar(int ID, string Produto, string CodigoDeBarras, string Observacoes)
+        public bool Atualizar(int ID, string Produto, string CodigoDeBarras, string Observacoes, int Marca)
         {
             SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
 
-            SqlCommand cmd = new SqlCommand("UPDATE Produtos SET NomeProduto = '" + Produto + "', CodigoDeBarras ='" + CodigoDeBarras + "', Observacoes ='" + Observacoes + "' WHERE id = " + ID, string_conexao);
+            SqlCommand cmd = new SqlCommand("UPDATE Produtos SET NomeProduto = '" + Produto + "', CodigoDeBarras ='" + CodigoDeBarras + "', Observacoes ='" + Observacoes + "', ID_Marca = '" + Marca + "' WHERE id = " + ID, string_conexao);
 
             try
             {
@@ -32,11 +43,11 @@ namespace EstoqueEsteticaSenac.Class
             }
         }
 
-        public bool Inserir(string NomeProduto, string CodigoDeBarras, string Observacoes)
+        public bool Inserir(string NomeProduto, string CodigoDeBarras, string Observacoes, int Marca)
         {
-            SqlConnection string_conexao = new SqlConnection(Properties.Resources.string_conexao);
+            SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
 
-            SqlCommand cmd = new SqlCommand("INSERT INTO Produtos (NomeProduto, CodigoDeBarras, Observacoes) VALUES('" + NomeProduto + "', '" + CodigoDeBarras + "', '" + Observacoes + "')", string_conexao);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Produtos (NomeProduto, CodigoDeBarras, Observacoes, ID_Marca) VALUES('" + NomeProduto + "', '" + CodigoDeBarras + "', '" + Observacoes + "', '" + Marca + "')", string_conexao);
 
             try
             {
@@ -61,7 +72,7 @@ namespace EstoqueEsteticaSenac.Class
 
         public bool Deletar(int ID)
         {
-            SqlConnection string_conexao = new SqlConnection(Properties.Resources.string_conexao);
+            SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
 
             SqlCommand cmd = new SqlCommand("DELETE FROM Produtos WHERE ID = " + ID, string_conexao);
 
@@ -92,8 +103,7 @@ namespace EstoqueEsteticaSenac.Class
         //3 = Não existe nada no banco
         public int ProdutoExistente(string Produto, string CodigoDeBarras)
         {
-            //Produto = Produto.ToLower();
-            CodigoDeBarras = CodigoDeBarras.ToLower();
+            Produto = Produto.ToLower();
             SqlConnection conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
             SqlCommand cmdProduto = new SqlCommand("SELECT COUNT(*) FROM Produtos WHERE NomeProduto = '" + Produto + "'", conexao);
             SqlCommand cmdCodigoDeBarras = new SqlCommand("SELECT COUNT(*) FROM Produtos WHERE CodigoDeBarras = '" + CodigoDeBarras + "'", conexao);
@@ -122,6 +132,26 @@ namespace EstoqueEsteticaSenac.Class
             }
 
 
+
+        }
+
+        public int BuscaIdMarca(string marca)
+        {
+            SqlConnection conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
+            SqlCommand cmd = new SqlCommand("select ID_MARCA from marca WHERE Nome_Marca = '"+marca+"'", conexao);
+
+            try
+            {
+                conexao.Open();
+                int resultado = Convert.ToInt16(cmd.ExecuteScalar());
+                conexao.Close();
+                return resultado;
+            }
+            catch (Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show(""+e);
+                return 0;
+            }
 
         }
     }
