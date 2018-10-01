@@ -1,5 +1,17 @@
 ﻿namespace EstoqueEsteticaSenac
 {
+}
+
+namespace EstoqueEsteticaSenac
+{
+}
+
+namespace EstoqueEsteticaSenac
+{
+}
+
+namespace EstoqueEsteticaSenac
+{
 
 
     partial class estoqueesteticaDataSet

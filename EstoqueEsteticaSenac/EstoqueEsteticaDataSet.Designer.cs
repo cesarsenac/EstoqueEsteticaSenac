@@ -1378,6 +1378,8 @@ namespace EstoqueEsteticaSenac {
             
             private global::System.Data.DataColumn columnNome_Marca;
             
+            private global::System.Data.DataColumn columnCodigoDeBarras;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ProdutosDataTable() {
@@ -1445,6 +1447,14 @@ namespace EstoqueEsteticaSenac {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CodigoDeBarrasColumn {
+                get {
+                    return this.columnCodigoDeBarras;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1480,13 +1490,14 @@ namespace EstoqueEsteticaSenac {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProdutosRow AddProdutosRow(string NomeProduto, string Observacoes, string Nome_Marca) {
+            public ProdutosRow AddProdutosRow(string NomeProduto, string Observacoes, string Nome_Marca, string CodigoDeBarras) {
                 ProdutosRow rowProdutosRow = ((ProdutosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         NomeProduto,
                         Observacoes,
-                        Nome_Marca};
+                        Nome_Marca,
+                        CodigoDeBarras};
                 rowProdutosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProdutosRow);
                 return rowProdutosRow;
@@ -1520,6 +1531,7 @@ namespace EstoqueEsteticaSenac {
                 this.columnNomeProduto = base.Columns["NomeProduto"];
                 this.columnObservacoes = base.Columns["Observacoes"];
                 this.columnNome_Marca = base.Columns["Nome_Marca"];
+                this.columnCodigoDeBarras = base.Columns["CodigoDeBarras"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1533,6 +1545,8 @@ namespace EstoqueEsteticaSenac {
                 base.Columns.Add(this.columnObservacoes);
                 this.columnNome_Marca = new global::System.Data.DataColumn("Nome_Marca", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNome_Marca);
+                this.columnCodigoDeBarras = new global::System.Data.DataColumn("CodigoDeBarras", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodigoDeBarras);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -1547,6 +1561,8 @@ namespace EstoqueEsteticaSenac {
                 this.columnObservacoes.MaxLength = 8000;
                 this.columnNome_Marca.AllowDBNull = false;
                 this.columnNome_Marca.MaxLength = 100;
+                this.columnCodigoDeBarras.AllowDBNull = false;
+                this.columnCodigoDeBarras.MaxLength = 13;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2305,6 +2321,17 @@ namespace EstoqueEsteticaSenac {
                 }
                 set {
                     this[this.tableProdutos.Nome_MarcaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string CodigoDeBarras {
+                get {
+                    return ((string)(this[this.tableProdutos.CodigoDeBarrasColumn]));
+                }
+                set {
+                    this[this.tableProdutos.CodigoDeBarrasColumn] = value;
                 }
             }
         }
@@ -3772,6 +3799,7 @@ SELECT CodigoProduto, Quantidade, DataSaida, DataVencimento FROM SaidaEstoque WH
             tableMapping.ColumnMappings.Add("NomeProduto", "NomeProduto");
             tableMapping.ColumnMappings.Add("Observacoes", "Observacoes");
             tableMapping.ColumnMappings.Add("Nome_Marca", "Nome_Marca");
+            tableMapping.ColumnMappings.Add("CodigoDeBarras", "CodigoDeBarras");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -3788,9 +3816,9 @@ SELECT CodigoProduto, Quantidade, DataSaida, DataVencimento FROM SaidaEstoque WH
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        produtos.ID, produtos.NomeProduto, produtos.Observacoes, Marca.Nome" +
-                "_Marca\r\nFROM            Marca INNER JOIN\r\n                         produtos ON M" +
-                "arca.ID_Marca = produtos.ID_Marca";
+            this._commandCollection[0].CommandText = "SELECT        produtos.ID, produtos.NomeProduto, produtos.CodigoDeBarras, produto" +
+                "s.Observacoes, Marca.Nome_Marca\r\nFROM            Marca INNER JOIN\r\n             " +
+                "            produtos ON Marca.ID_Marca = produtos.ID_Marca";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

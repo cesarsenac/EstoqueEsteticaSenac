@@ -24,12 +24,6 @@ namespace EstoqueEsteticaSenac.Forms
             this.produtosTableAdapter.Fill(this.estoqueEsteticaDataSet.Produtos);
             // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Marca' table. You can move, or remove it, as needed.
             this.marcaTableAdapter.Fill(this.estoqueEsteticaDataSet.Marca);
-            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Produtos' table. You can move, or remove it, as needed.
-            this.produtosTableAdapter.Fill(this.estoqueEsteticaDataSet.Produtos);
-            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Produtos' table. You can move, or remove it, as needed.
-            this.produtosTableAdapter.Fill(this.estoqueEsteticaDataSet.Produtos);
-            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Marca' table. You can move, or remove it, as needed.
-            this.marcaTableAdapter.Fill(this.estoqueEsteticaDataSet.Marca);
 
             textBoxProduto.Focus();
 
@@ -115,15 +109,6 @@ namespace EstoqueEsteticaSenac.Forms
             }
         }
 
-        private void dataGridViewProduto_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            textBoxID.Text = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            textBoxProduto.Text = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            textBoxCodigoDeBarras.Text = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            textBoxObservacoes.Text = this.dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            
-        }
-
         private void buttonAtualizar_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(textBoxID.Text) ||
@@ -180,6 +165,15 @@ namespace EstoqueEsteticaSenac.Forms
                 e.Handled = true;
 
             }
+        }
+
+        private void dataGridViewProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxID.Text = this.dataGridViewProdutos.CurrentRow.Cells[0].Value.ToString();
+            textBoxProduto.Text = this.dataGridViewProdutos.CurrentRow.Cells[1].Value.ToString();
+            textBoxCodigoDeBarras.Text = this.dataGridViewProdutos.CurrentRow.Cells[2].Value.ToString();
+            textBoxObservacoes.Text = this.dataGridViewProdutos.CurrentRow.Cells[3].Value.ToString();
+            comboBoxMarca.Text = this.dataGridViewProdutos.CurrentRow.Cells[4].Value.ToString();
         }
     }
 }
