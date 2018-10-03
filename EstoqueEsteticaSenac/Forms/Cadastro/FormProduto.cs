@@ -163,6 +163,53 @@ namespace EstoqueEsteticaSenac.Forms
                 e.Handled = true;
 
             }
+            else if (e.KeyChar == 13)
+            {
+                Produto p = new Produto();
+                if (String.IsNullOrEmpty(textBoxProduto.Text) ||
+                    String.IsNullOrEmpty(textBoxCodigoDeBarras.Text) ||
+                    String.IsNullOrEmpty(comboBoxMarca.Text))
+                {
+                    MessageBox.Show("Não deixe os campos em branco", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    if (textBoxCodigoDeBarras.TextLength < 13)
+                    {
+                        MessageBox.Show("Codigo de Barras invalido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        int resultado = p.ProdutoExistente(textBoxProduto.Text, textBoxCodigoDeBarras.Text);
+
+                        if (resultado == 1)
+                        {
+                            MessageBox.Show("O Nome do Produto " + textBoxProduto.Text + " ja existe");
+                        }
+                        else if (resultado == 2)
+                        {
+                            MessageBox.Show("Codigo De Barras " + textBoxCodigoDeBarras.Text + " já cadastrado");
+                        }
+                        else if (resultado == 3)
+                        {
+                            int resultadoMarca = p.BuscaIdMarca(comboBoxMarca.Text);
+                            bool resultadoClasse = p.Inserir(textBoxProduto.Text, textBoxCodigoDeBarras.Text, textBoxObservacoes.Text, resultadoMarca);
+                            if (resultadoClasse == true)
+                            {
+                                MessageBox.Show("Dados gravados com sucesso!", "Secesso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                                //atualiza o datagridview
+                                this.produtosTableAdapter.Fill(this.estoqueEsteticaDataSet.Produtos);
+                            }
+
+                            else
+                            {
+                                MessageBox.Show("Erro na gravação dos dados", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void dataGridViewProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
