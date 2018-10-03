@@ -23,6 +23,7 @@ namespace EstoqueEsteticaSenac.Forms
             // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Marca' table. You can move, or remove it, as needed.
             this.marcaTableAdapter.Fill(this.estoqueEsteticaDataSet.Marca);
 
+            textBoxMarca.Focus();
         }
 
         private void buttonInserir_Click(object sender, EventArgs e)
@@ -37,7 +38,7 @@ namespace EstoqueEsteticaSenac.Forms
                 bool resultado = m.MarcaExiste(textBoxMarca.Text);
                 if (resultado == true)
                 {
-                    MessageBox.Show("A marca " + textBoxMarca.Text + "já existe");
+                    MessageBox.Show("A marca " + textBoxMarca.Text + " já existe","Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
@@ -124,6 +125,45 @@ namespace EstoqueEsteticaSenac.Forms
             textBoxID.Text = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
             textBoxMarca.Text = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
             textBoxObservacao.Text = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
+        }
+
+        private void textBoxMarca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                MarcaCadastro m = new MarcaCadastro();
+                if (String.IsNullOrEmpty(textBoxMarca.Text))
+                {
+                    MessageBox.Show("Não deixe o campo marca em branco", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    bool resultado = m.MarcaExiste(textBoxMarca.Text);
+                    if (resultado == true)
+                    {
+                        MessageBox.Show("A marca " + textBoxMarca.Text + " já existe", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        bool resultadoClasse = m.Inserir(textBoxMarca.Text, textBoxObservacao.Text);
+
+                        if (resultadoClasse == true)
+                        {
+                            MessageBox.Show("Dados gravados com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                            textBoxID.Text = "";
+                            textBoxMarca.Text = "";
+                            textBoxObservacao.Text = "";
+
+                            this.marcaTableAdapter.Fill(this.estoqueEsteticaDataSet.Marca);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Erro na gravação dos dados", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                    }
+                }
+            }
         }
     }
 }

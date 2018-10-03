@@ -41,17 +41,17 @@
             this.buttonPesquisar = new System.Windows.Forms.Button();
             this.buttonAtualizar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tblMarcaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.estoqueEsteticaDataSet = new EstoqueEsteticaSenac.EstoqueEsteticaDataSet();
-            this.marcaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.marcaTableAdapter = new EstoqueEsteticaSenac.EstoqueEsteticaDataSetTableAdapters.MarcaTableAdapter();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marcaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.estoqueEsteticaDataSet = new EstoqueEsteticaSenac.EstoqueEsteticaDataSet();
+            this.tblMarcaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.marcaTableAdapter = new EstoqueEsteticaSenac.EstoqueEsteticaDataSetTableAdapters.MarcaTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblMarcaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estoqueEsteticaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.marcaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueEsteticaDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblMarcaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxID
@@ -70,6 +70,7 @@
             this.textBoxMarca.Name = "textBoxMarca";
             this.textBoxMarca.Size = new System.Drawing.Size(203, 23);
             this.textBoxMarca.TabIndex = 6;
+            this.textBoxMarca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMarca_KeyPress);
             // 
             // textBoxObservacao
             // 
@@ -170,44 +171,44 @@
             this.dataGridView1.TabIndex = 15;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // tblMarcaBindingSource
-            // 
-            this.tblMarcaBindingSource.DataMember = "Tbl_Marca";
-            // 
-            // estoqueEsteticaDataSet
-            // 
-            this.estoqueEsteticaDataSet.DataSetName = "EstoqueEsteticaDataSet";
-            this.estoqueEsteticaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // marcaBindingSource
-            // 
-            this.marcaBindingSource.DataMember = "Marca";
-            this.marcaBindingSource.DataSource = this.estoqueEsteticaDataSet;
-            // 
-            // marcaTableAdapter
-            // 
-            this.marcaTableAdapter.ClearBeforeFill = true;
-            // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "ID_Marca";
-            this.dataGridViewTextBoxColumn4.HeaderText = "ID_Marca";
+            this.dataGridViewTextBoxColumn4.HeaderText = "ID";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "Nome_Marca";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Nome_Marca";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Marca";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "Observacao_Marca";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Observacao_Marca";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Observação";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // marcaBindingSource
+            // 
+            this.marcaBindingSource.DataMember = "Marca";
+            this.marcaBindingSource.DataSource = this.estoqueEsteticaDataSet;
+            // 
+            // estoqueEsteticaDataSet
+            // 
+            this.estoqueEsteticaDataSet.DataSetName = "EstoqueEsteticaDataSet";
+            this.estoqueEsteticaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tblMarcaBindingSource
+            // 
+            this.tblMarcaBindingSource.DataMember = "Tbl_Marca";
+            // 
+            // marcaTableAdapter
+            // 
+            this.marcaTableAdapter.ClearBeforeFill = true;
             // 
             // Marca
             // 
@@ -230,9 +231,9 @@
             this.Text = "Marca";
             this.Load += new System.EventHandler(this.Marca_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblMarcaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estoqueEsteticaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.marcaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueEsteticaDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblMarcaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

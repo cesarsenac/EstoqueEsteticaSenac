@@ -20,12 +20,12 @@ namespace EstoqueEsteticaSenac.Forms
 
         private void FormProduto_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Marca' table. You can move, or remove it, as needed.
-            this.marcaTableAdapter.Fill(this.estoqueEsteticaDataSet.Marca);
             // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Produtos' table. You can move, or remove it, as needed.
             this.produtosTableAdapter.Fill(this.estoqueEsteticaDataSet.Produtos);
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Marca' table. You can move, or remove it, as needed.
+            this.marcaTableAdapter.Fill(this.estoqueEsteticaDataSet.Marca);
 
-            textBoxProduto.Focus();
+            textBoxCodigoDeBarras.Focus();
 
         }
 
@@ -33,7 +33,8 @@ namespace EstoqueEsteticaSenac.Forms
         {
             Produto p = new Produto();
             if (String.IsNullOrEmpty(textBoxProduto.Text) ||
-                String.IsNullOrEmpty(textBoxCodigoDeBarras.Text))                
+                String.IsNullOrEmpty(textBoxCodigoDeBarras.Text) ||
+                String.IsNullOrEmpty(comboBoxMarca.Text))
             {
                 MessageBox.Show("Não deixe os campos em branco", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -57,7 +58,8 @@ namespace EstoqueEsteticaSenac.Forms
                     }
                     else if (resultado == 3)
                     {
-                        bool resultadoClasse = p.Inserir(textBoxProduto.Text, textBoxCodigoDeBarras.Text, textBoxObservacoes.Text);
+                        int resultadoMarca = p.BuscaIdMarca(comboBoxMarca.Text);
+                        bool resultadoClasse = p.Inserir(textBoxProduto.Text, textBoxCodigoDeBarras.Text, textBoxObservacoes.Text, resultadoMarca);
                         if (resultadoClasse == true)
                         {
                             MessageBox.Show("Dados gravados com sucesso!", "Secesso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -107,19 +109,12 @@ namespace EstoqueEsteticaSenac.Forms
             }
         }
 
-        private void dataGridViewProduto_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            textBoxID.Text = this.dataGridViewProduto.CurrentRow.Cells[0].Value.ToString();
-            textBoxProduto.Text = this.dataGridViewProduto.CurrentRow.Cells[1].Value.ToString();
-            textBoxCodigoDeBarras.Text = this.dataGridViewProduto.CurrentRow.Cells[2].Value.ToString();
-            textBoxObservacoes.Text = this.dataGridViewProduto.CurrentRow.Cells[3].Value.ToString();
-        }
-
         private void buttonAtualizar_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(textBoxID.Text) ||
                 String.IsNullOrEmpty(textBoxProduto.Text) ||
-                String.IsNullOrEmpty(textBoxCodigoDeBarras.Text))
+                String.IsNullOrEmpty(textBoxCodigoDeBarras.Text) ||
+                String.IsNullOrEmpty(comboBoxMarca.Text))
 
             {
                 MessageBox.Show("Não deixe os campos em branco", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -128,13 +123,12 @@ namespace EstoqueEsteticaSenac.Forms
             else
             {
                 Produto p = new Produto();
-                bool ResultadoClasse = p.Atualizar(Convert.ToInt32(textBoxID.Text), textBoxProduto.Text, textBoxCodigoDeBarras.Text, textBoxObservacoes.Text);
+                int resultadoMarca = p.BuscaIdMarca(comboBoxMarca.Text);
+                bool ResultadoClasse = p.Atualizar(Convert.ToInt32(textBoxID.Text), textBoxProduto.Text, textBoxCodigoDeBarras.Text, textBoxObservacoes.Text, resultadoMarca);
 
                 if (ResultadoClasse == true)
                 {
                     MessageBox.Show("Dados Alterados com sucesso!", "Secesso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                    Limpar();
 
                     //atualiza o datagridview
                     this.produtosTableAdapter.Fill(this.estoqueEsteticaDataSet.Produtos);
@@ -169,6 +163,62 @@ namespace EstoqueEsteticaSenac.Forms
                 e.Handled = true;
 
             }
+            else if (e.KeyChar == 13)
+            {
+                Produto p = new Produto();
+                if (String.IsNullOrEmpty(textBoxProduto.Text) ||
+                    String.IsNullOrEmpty(textBoxCodigoDeBarras.Text) ||
+                    String.IsNullOrEmpty(comboBoxMarca.Text))
+                {
+                    MessageBox.Show("Não deixe os campos em branco", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    if (textBoxCodigoDeBarras.TextLength < 13)
+                    {
+                        MessageBox.Show("Codigo de Barras invalido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        int resultado = p.ProdutoExistente(textBoxProduto.Text, textBoxCodigoDeBarras.Text);
+
+                        if (resultado == 1)
+                        {
+                            MessageBox.Show("O Nome do Produto " + textBoxProduto.Text + " ja existe");
+                        }
+                        else if (resultado == 2)
+                        {
+                            MessageBox.Show("Codigo De Barras " + textBoxCodigoDeBarras.Text + " já cadastrado");
+                        }
+                        else if (resultado == 3)
+                        {
+                            int resultadoMarca = p.BuscaIdMarca(comboBoxMarca.Text);
+                            bool resultadoClasse = p.Inserir(textBoxProduto.Text, textBoxCodigoDeBarras.Text, textBoxObservacoes.Text, resultadoMarca);
+                            if (resultadoClasse == true)
+                            {
+                                MessageBox.Show("Dados gravados com sucesso!", "Secesso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                                //atualiza o datagridview
+                                this.produtosTableAdapter.Fill(this.estoqueEsteticaDataSet.Produtos);
+                            }
+
+                            else
+                            {
+                                MessageBox.Show("Erro na gravação dos dados", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void dataGridViewProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxID.Text = this.dataGridViewProdutos.CurrentRow.Cells[0].Value.ToString();
+            textBoxProduto.Text = this.dataGridViewProdutos.CurrentRow.Cells[1].Value.ToString();
+            textBoxCodigoDeBarras.Text = this.dataGridViewProdutos.CurrentRow.Cells[2].Value.ToString();
+            textBoxObservacoes.Text = this.dataGridViewProdutos.CurrentRow.Cells[3].Value.ToString();
+            comboBoxMarca.Text = this.dataGridViewProdutos.CurrentRow.Cells[4].Value.ToString();
         }
     }
 }
