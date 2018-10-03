@@ -163,9 +163,19 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
 
         private void textBoxQuantidade_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
+           if(e.KeyChar == 13)
             {
-                MessageBox.Show("Não digite letras ou espaço.");
+                if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
+                {
+                    MessageBox.Show("Não digite letras ou espaço.");
+                }
+                else
+                {
+                    maskedTextBoxDataSaida.Text = Convert.ToString(DateTime.Now);
+
+                    maskedTextBoxDataVencimento.Focus();
+
+                }
             }
         }
 
@@ -187,6 +197,11 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
 
                     string produto = se.BuscaNomeProduto(textBoxCodigoBarras.Text);
                     textBoxProduto.Text = produto;
+
+                    string marca = se.BuscaMarcaProduto(textBoxCodigoBarras.Text);
+                    textBoxMarca.Text = marca;
+
+                    textBoxQuantidade.Focus();
 
 
                 }

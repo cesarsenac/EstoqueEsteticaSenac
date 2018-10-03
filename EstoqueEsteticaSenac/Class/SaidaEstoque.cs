@@ -122,12 +122,41 @@ namespace EstoqueEsteticaSenac.Classes
 
                 // 4) Executar query no banco.
                 string produto = (string)cmd.ExecuteScalar();
-                System.Windows.Forms.MessageBox.Show(produto);
+
 
                 // 5) Fechar conexão com o banco.
                 string_conexao.Close();
 
                 return produto;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro ao gravar no banco de dados \n" + e.Message);
+                return "";
+            }
+        }
+
+        public string BuscaMarcaProduto (string codigodebarras)
+        {
+            // 1) Preparando conexão.
+            SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
+
+            // 2) SQL que vai para o banco.
+            SqlCommand cmd = new SqlCommand("SELECT Marca.Nome_Marca FROM Produtos  INNER JOIN Marca ON Produtos.ID_Marca = Marca.ID_Marca WHERE Produtos.CodigoDeBarras = '"+codigodebarras+"'", string_conexao);
+
+            try
+            {
+                // 3) Abrir a conexão com o banco.
+                string_conexao.Open();
+
+                // 4) Executar query no banco.
+                string marca = (string)cmd.ExecuteScalar();
+
+
+                // 5) Fechar conexão com o banco.
+                string_conexao.Close();
+
+                return marca;
             }
             catch (Exception e)
             {
