@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using EstoqueEsteticaSenac.Classes;
 
 
-
 namespace EstoqueEsteticaSenac.Forms.Estoque
 {
     public partial class FormEntradaProduto : Form
@@ -21,9 +20,11 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
         }
 
         private void FormEntradaProduto_Load(object sender, EventArgs e)
-        {           
+        {
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.EntradaEstoque' table. You can move, or remove it, as needed.
+            this.entradaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.EntradaEstoque);
+
             
-            textBoxProduto.Focus();
         }
 
 
@@ -54,11 +55,7 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                 {
 
                     MessageBox.Show("Dados Inseridos com Sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    //textBoxProduto.Text = "";
-                    //textBoxMarca.Text = "";                       
-                    //textBoxQuantidade.Text = "";
-                    //maskedTextBoxDataEntrada.Text = "";
-                    //maskedTextBoxVencimento.Text = "";
+
                     
                 }
                 else
@@ -156,42 +153,62 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
             if(resultado == DialogResult.Yes)
             this.Close();
         }
-
-        
-
-        //private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+             
+        //private void dataGridViewEntradaEstoque_CellClick(object sender, DataGridViewCellEventArgs e)
         //{
-           // textBoxCodigoProduto.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[0].Value.ToString();            
-           // textBoxQuantidade.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[1].Value.ToString();
-           // maskedTextBoxDataEntrada.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[2].Value.ToString();
-           // maskedTextBoxVencimento.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[3].Value.ToString();
+         //   textBoxCodigoProduto.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[0].Value.ToString();
+         //   textBoxQuantidade.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[1].Value.ToString();
+         //   maskedTextBoxDataEntrada.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[2].Value.ToString();
+         //   maskedTextBoxVencimento.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[3].Value.ToString();
         //}
-
-        private void dataGridViewEntradaEstoque_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            textBoxCodigoProduto.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[0].Value.ToString();
-            textBoxQuantidade.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[1].Value.ToString();
-            maskedTextBoxDataEntrada.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[2].Value.ToString();
-            maskedTextBoxVencimento.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[3].Value.ToString();
-        }
-
 
         private void textBoxQuantidade_KeyPress_1(object sender, KeyPressEventArgs e)
         {
+            if(e.KeyChar == 13)
+            {
+                if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
+                {
+                    MessageBox.Show("Nao digite LETRAS ou ESPAÇOS...");
+                    e.Handled = true;
+                }
+                else
+                {
+                    maskedTextBoxDataEntrada.Text = Convert.ToString(DateTime.Now);
+
+                    maskedTextBoxDataEntrada.Focus();
+                }
+            }
+        }       
+
+        private void textBoxCodigoBarras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == 13)
             if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
             {
-                MessageBox.Show("Nao digite LETRAS ou ESPAÇOS no ESPAÇO QUANTIDADE");
+                MessageBox.Show("Não digite letras ou espaço.");
                 e.Handled = true;
+            }
+            else
+            {
+                EntradaEstoque ee = new EntradaEstoque();
+                int resultadoID = ee.BuscaIdProduto(textBoxCodigoBarras.Text);
+                textBoxCodigoProduto.Text = Convert.ToString(resultadoID);
+
+                   
+                 string Produto = ee.BuscaProduto(textBoxCodigoBarras.Text);
+                 textBoxProduto.Text = Produto;
+
+                 string marca = ee.BuscaMarca(textBoxCodigoBarras.Text);
+                 textBoxMarca.Text = marca;
+
+                    textBoxQuantidade.Focus();
             }
         }
 
-        private void textBoxProduto_KeyPress(object sender, KeyPressEventArgs e)
+        private void dataGridViewEntradaEstoque_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.KeyChar == 13)//digitou enter
-            {
-                maskedTextBoxDataEntrada.Text = Convert.ToString(DateTime.Now);
-                textBoxQuantidade.Focus();
-            }
+          
+
         }
     }
 }
