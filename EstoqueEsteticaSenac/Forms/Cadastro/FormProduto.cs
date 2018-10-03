@@ -20,10 +20,10 @@ namespace EstoqueEsteticaSenac.Forms
 
         private void FormProduto_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Marca' table. You can move, or remove it, as needed.
-            this.marcaTableAdapter.Fill(this.estoqueEsteticaDataSet.Marca);
             // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Produtos' table. You can move, or remove it, as needed.
             this.produtosTableAdapter.Fill(this.estoqueEsteticaDataSet.Produtos);
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Marca' table. You can move, or remove it, as needed.
+            this.marcaTableAdapter.Fill(this.estoqueEsteticaDataSet.Marca);
 
             textBoxProduto.Focus();
 
@@ -33,7 +33,8 @@ namespace EstoqueEsteticaSenac.Forms
         {
             Produto p = new Produto();
             if (String.IsNullOrEmpty(textBoxProduto.Text) ||
-                String.IsNullOrEmpty(textBoxCodigoDeBarras.Text))                
+                String.IsNullOrEmpty(textBoxCodigoDeBarras.Text) ||
+                String.IsNullOrEmpty(comboBoxMarca.Text))
             {
                 MessageBox.Show("Não deixe os campos em branco", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -57,7 +58,8 @@ namespace EstoqueEsteticaSenac.Forms
                     }
                     else if (resultado == 3)
                     {
-                        bool resultadoClasse = p.Inserir(textBoxProduto.Text, textBoxCodigoDeBarras.Text, textBoxObservacoes.Text);
+                        int resultadoMarca = p.BuscaIdMarca(comboBoxMarca.Text);
+                        bool resultadoClasse = p.Inserir(textBoxProduto.Text, textBoxCodigoDeBarras.Text, textBoxObservacoes.Text, resultadoMarca);
                         if (resultadoClasse == true)
                         {
                             MessageBox.Show("Dados gravados com sucesso!", "Secesso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -107,19 +109,12 @@ namespace EstoqueEsteticaSenac.Forms
             }
         }
 
-        private void dataGridViewProduto_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            textBoxID.Text = this.dataGridViewProduto.CurrentRow.Cells[0].Value.ToString();
-            textBoxProduto.Text = this.dataGridViewProduto.CurrentRow.Cells[1].Value.ToString();
-            textBoxCodigoDeBarras.Text = this.dataGridViewProduto.CurrentRow.Cells[2].Value.ToString();
-            textBoxObservacoes.Text = this.dataGridViewProduto.CurrentRow.Cells[3].Value.ToString();
-        }
-
         private void buttonAtualizar_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(textBoxID.Text) ||
                 String.IsNullOrEmpty(textBoxProduto.Text) ||
-                String.IsNullOrEmpty(textBoxCodigoDeBarras.Text))
+                String.IsNullOrEmpty(textBoxCodigoDeBarras.Text) ||
+                String.IsNullOrEmpty(comboBoxMarca.Text))
 
             {
                 MessageBox.Show("Não deixe os campos em branco", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -128,7 +123,8 @@ namespace EstoqueEsteticaSenac.Forms
             else
             {
                 Produto p = new Produto();
-                bool ResultadoClasse = p.Atualizar(Convert.ToInt32(textBoxID.Text), textBoxProduto.Text, textBoxCodigoDeBarras.Text, textBoxObservacoes.Text);
+                int resultadoMarca = p.BuscaIdMarca(comboBoxMarca.Text);
+                bool ResultadoClasse = p.Atualizar(Convert.ToInt32(textBoxID.Text), textBoxProduto.Text, textBoxCodigoDeBarras.Text, textBoxObservacoes.Text, resultadoMarca);
 
                 if (ResultadoClasse == true)
                 {
@@ -169,6 +165,15 @@ namespace EstoqueEsteticaSenac.Forms
                 e.Handled = true;
 
             }
+        }
+
+        private void dataGridViewProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxID.Text = this.dataGridViewProdutos.CurrentRow.Cells[0].Value.ToString();
+            textBoxProduto.Text = this.dataGridViewProdutos.CurrentRow.Cells[1].Value.ToString();
+            textBoxCodigoDeBarras.Text = this.dataGridViewProdutos.CurrentRow.Cells[2].Value.ToString();
+            textBoxObservacoes.Text = this.dataGridViewProdutos.CurrentRow.Cells[3].Value.ToString();
+            comboBoxMarca.Text = this.dataGridViewProdutos.CurrentRow.Cells[4].Value.ToString();
         }
     }
 }
