@@ -25,7 +25,7 @@ namespace EstoqueEsteticaSenac.Forms
             // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Marca' table. You can move, or remove it, as needed.
             this.marcaTableAdapter.Fill(this.estoqueEsteticaDataSet.Marca);
 
-            textBoxProduto.Focus();
+            textBoxCodigoDeBarras.Focus();
 
         }
 
@@ -129,8 +129,6 @@ namespace EstoqueEsteticaSenac.Forms
                 if (ResultadoClasse == true)
                 {
                     MessageBox.Show("Dados Alterados com sucesso!", "Secesso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                    Limpar();
 
                     //atualiza o datagridview
                     this.produtosTableAdapter.Fill(this.estoqueEsteticaDataSet.Produtos);
