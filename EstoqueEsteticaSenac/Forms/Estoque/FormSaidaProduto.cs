@@ -108,7 +108,9 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
 
         private void FormSaidaProduto_Load(object sender, EventArgs e)
         {
-
+            textBoxCodigoBarras.Focus();
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
+            this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -163,17 +165,33 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
         {
             if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
             {
-                MessageBox.Show("Não digite letras ou espaços no espaço quantidade!");
+                MessageBox.Show("Não digite letras ou espaço.");
             }
         }
 
-        private void textBoxProduto_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBoxCodigoBarras_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13) //Pessoa digitou enter
+
+            if (e.KeyChar == 13) //Quando a tecla enter for presionada
             {
-                maskedTextBoxDataSaida.Text = Convert.ToString(DateTime.Now);
-                textBoxQuantidade.Focus();
+                if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
+                {
+                    MessageBox.Show("Não digite letras ou espaço.");
+                    e.Handled = true;
+                }
+                else
+                {
+                    SaidaEstoque se = new SaidaEstoque();
+                    int resultadoID = se.BuscaIdProduto(textBoxCodigoBarras.Text);
+                    textBoxCodigoProduto.Text = Convert.ToString(resultadoID);
+
+                    string produto = se.BuscaNomeProduto(textBoxCodigoBarras.Text);
+                    textBoxProduto.Text = produto;
+
+
+                }
             }
+
         }
     }
 }

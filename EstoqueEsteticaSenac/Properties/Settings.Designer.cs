@@ -12,7 +12,7 @@ namespace EstoqueEsteticaSenac.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -37,8 +37,8 @@ namespace EstoqueEsteticaSenac.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=BOT0626788W10-1\\;Initial Catalog=estoqueestetica;Persist Security Inf" +
-            "o=True;User ID=sa;Password=sasenac")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=BOT0626788W10-1;Initial Catalog=estoqueestetica;Persist Security Info" +
+            "=True;User ID=sa;Password=sasenac")]
         public string string_conexao {
             get {
                 return ((string)(this["string_conexao"]));
@@ -84,8 +84,8 @@ namespace EstoqueEsteticaSenac.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=BOT0626788W10-1\\;Initial Catalog=estoqueestetica;Persist Security Inf" +
-            "o=True;User ID=sa;Password=sasenac")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=BOT0626788W10-1;Initial Catalog=estoqueestetica;Persist Security Info" +
+            "=True;User ID=sa;Password=sasenac")]
         public string EstoqueEsteticaConnectionString {
             get {
                 return ((string)(this["EstoqueEsteticaConnectionString"]));

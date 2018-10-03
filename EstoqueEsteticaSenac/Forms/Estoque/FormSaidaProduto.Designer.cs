@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSaidaProduto));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,10 +52,21 @@
             this.maskedTextBoxDataSaida = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBoxDataVencimento = new System.Windows.Forms.MaskedTextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saidaEstoqueBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.estoqueEsteticaDataSet = new EstoqueEsteticaSenac.EstoqueEsteticaDataSet();
             this.saidaEstoqueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saidaEstoque2BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.saidaEstoque2BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxCodigoBarras = new System.Windows.Forms.TextBox();
+            this.saidaEstoqueTableAdapter = new EstoqueEsteticaSenac.EstoqueEsteticaDataSetTableAdapters.SaidaEstoqueTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueEsteticaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoque2BindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoque2BindingSource)).BeginInit();
@@ -71,7 +86,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(120, 81);
+            this.label2.Location = new System.Drawing.Point(120, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(141, 20);
             this.label2.TabIndex = 1;
@@ -81,7 +96,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(120, 118);
+            this.label3.Location = new System.Drawing.Point(120, 130);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 20);
             this.label3.TabIndex = 2;
@@ -91,7 +106,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(120, 155);
+            this.label4.Location = new System.Drawing.Point(120, 167);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 20);
             this.label4.TabIndex = 3;
@@ -101,7 +116,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(120, 192);
+            this.label5.Location = new System.Drawing.Point(120, 201);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 20);
             this.label5.TabIndex = 4;
@@ -111,7 +126,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(120, 229);
+            this.label6.Location = new System.Drawing.Point(120, 236);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 20);
             this.label6.TabIndex = 5;
@@ -120,26 +135,26 @@
             // textBoxCodigoProduto
             // 
             this.textBoxCodigoProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCodigoProduto.Location = new System.Drawing.Point(281, 84);
+            this.textBoxCodigoProduto.Location = new System.Drawing.Point(281, 58);
             this.textBoxCodigoProduto.MaxLength = 13;
             this.textBoxCodigoProduto.Name = "textBoxCodigoProduto";
+            this.textBoxCodigoProduto.ReadOnly = true;
             this.textBoxCodigoProduto.Size = new System.Drawing.Size(171, 23);
             this.textBoxCodigoProduto.TabIndex = 6;
             // 
             // textBoxProduto
             // 
             this.textBoxProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxProduto.Location = new System.Drawing.Point(281, 120);
+            this.textBoxProduto.Location = new System.Drawing.Point(281, 130);
             this.textBoxProduto.Name = "textBoxProduto";
             this.textBoxProduto.ReadOnly = true;
             this.textBoxProduto.Size = new System.Drawing.Size(171, 23);
             this.textBoxProduto.TabIndex = 7;
-            this.textBoxProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxProduto_KeyPress);
             // 
             // textBoxMarca
             // 
             this.textBoxMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxMarca.Location = new System.Drawing.Point(281, 157);
+            this.textBoxMarca.Location = new System.Drawing.Point(281, 164);
             this.textBoxMarca.Name = "textBoxMarca";
             this.textBoxMarca.ReadOnly = true;
             this.textBoxMarca.Size = new System.Drawing.Size(171, 23);
@@ -148,7 +163,7 @@
             // textBoxQuantidade
             // 
             this.textBoxQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxQuantidade.Location = new System.Drawing.Point(281, 191);
+            this.textBoxQuantidade.Location = new System.Drawing.Point(281, 198);
             this.textBoxQuantidade.Name = "textBoxQuantidade";
             this.textBoxQuantidade.Size = new System.Drawing.Size(171, 23);
             this.textBoxQuantidade.TabIndex = 9;
@@ -202,7 +217,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(120, 261);
+            this.label7.Location = new System.Drawing.Point(120, 271);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(151, 20);
             this.label7.TabIndex = 17;
@@ -211,7 +226,7 @@
             // maskedTextBoxDataSaida
             // 
             this.maskedTextBoxDataSaida.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBoxDataSaida.Location = new System.Drawing.Point(281, 226);
+            this.maskedTextBoxDataSaida.Location = new System.Drawing.Point(281, 233);
             this.maskedTextBoxDataSaida.Mask = "99/99/9999";
             this.maskedTextBoxDataSaida.Name = "maskedTextBoxDataSaida";
             this.maskedTextBoxDataSaida.Size = new System.Drawing.Size(80, 23);
@@ -221,7 +236,7 @@
             // maskedTextBoxDataVencimento
             // 
             this.maskedTextBoxDataVencimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBoxDataVencimento.Location = new System.Drawing.Point(281, 261);
+            this.maskedTextBoxDataVencimento.Location = new System.Drawing.Point(281, 268);
             this.maskedTextBoxDataVencimento.Mask = "99/99/9999";
             this.maskedTextBoxDataVencimento.Name = "maskedTextBoxDataVencimento";
             this.maskedTextBoxDataVencimento.Size = new System.Drawing.Size(80, 23);
@@ -234,13 +249,67 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.DataSource = this.saidaEstoqueBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(69, 300);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.dataGridView1.DataSource = this.saidaEstoqueBindingSource1;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 297);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(440, 231);
+            this.dataGridView1.Size = new System.Drawing.Size(568, 234);
             this.dataGridView1.TabIndex = 20;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "CodigoProduto";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewTextBoxColumn1.HeaderText = "CodigoProduto";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Quantidade";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Quantidade";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "DataSaida";
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewTextBoxColumn3.HeaderText = "DataSaida";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "DataVencimento";
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewTextBoxColumn4.HeaderText = "DataVencimento";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // saidaEstoqueBindingSource1
+            // 
+            this.saidaEstoqueBindingSource1.DataMember = "SaidaEstoque";
+            this.saidaEstoqueBindingSource1.DataSource = this.estoqueEsteticaDataSet;
+            // 
+            // estoqueEsteticaDataSet
+            // 
+            this.estoqueEsteticaDataSet.DataSetName = "EstoqueEsteticaDataSet";
+            this.estoqueEsteticaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // saidaEstoqueBindingSource
             // 
@@ -254,11 +323,37 @@
             // 
             this.saidaEstoque2BindingSource.DataMember = "SaidaEstoque2";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(120, 95);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(132, 20);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Código de Barras";
+            // 
+            // textBoxCodigoBarras
+            // 
+            this.textBoxCodigoBarras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCodigoBarras.Location = new System.Drawing.Point(281, 92);
+            this.textBoxCodigoBarras.MaxLength = 13;
+            this.textBoxCodigoBarras.Name = "textBoxCodigoBarras";
+            this.textBoxCodigoBarras.Size = new System.Drawing.Size(171, 26);
+            this.textBoxCodigoBarras.TabIndex = 22;
+            this.textBoxCodigoBarras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCodigoBarras_KeyPress);
+            // 
+            // saidaEstoqueTableAdapter
+            // 
+            this.saidaEstoqueTableAdapter.ClearBeforeFill = true;
+            // 
             // FormSaidaProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 9F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(592, 587);
+            this.Controls.Add(this.textBoxCodigoBarras);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.maskedTextBoxDataVencimento);
             this.Controls.Add(this.maskedTextBoxDataSaida);
@@ -286,6 +381,8 @@
             this.Text = "FormSaidaProduto";
             this.Load += new System.EventHandler(this.FormSaidaProduto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueEsteticaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoque2BindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoque2BindingSource)).EndInit();
@@ -321,5 +418,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataVencimentoDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource saidaEstoque2BindingSource1;
         private System.Windows.Forms.BindingSource saidaEstoqueBindingSource;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxCodigoBarras;
+        private EstoqueEsteticaDataSet estoqueEsteticaDataSet;
+        private System.Windows.Forms.BindingSource saidaEstoqueBindingSource1;
+        private EstoqueEsteticaDataSetTableAdapters.SaidaEstoqueTableAdapter saidaEstoqueTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }
