@@ -26,7 +26,6 @@ namespace EstoqueEsteticaSenac.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             if (String.IsNullOrEmpty(textBoxLogin.Text) || String.IsNullOrEmpty(textBoxSenha.Text))
             {
                 MessageBox.Show("Não deixe os Campos em branco", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -49,9 +48,31 @@ namespace EstoqueEsteticaSenac.Forms
             }
         }
 
-        private void FormLogin_Load(object sender, EventArgs e)
+        private void textBoxSenha_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if(e.KeyChar == 13)
+            {
+                if (String.IsNullOrEmpty(textBoxLogin.Text) || String.IsNullOrEmpty(textBoxSenha.Text))
+                {
+                    MessageBox.Show("Não deixe os Campos em branco", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    Usuarios u = new Usuarios();
+                    bool resultado = u.Login(textBoxLogin.Text, textBoxSenha.Text);
+                    if (resultado == true)
+                    {
+                        this.Hide();
+                        Properties.Settings.Default.login_atual = Convert.ToString(DateTime.Now);
+                        FormPrincipal p = new FormPrincipal();
+                        p.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Login e/ou senha Incorretos", "Erro ao Logar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
         }
     }
 }
