@@ -22,7 +22,7 @@ namespace EstoqueEsteticaSenac.Forms
         {
             // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Marca' table. You can move, or remove it, as needed.
             this.marcaTableAdapter.Fill(this.estoqueEsteticaDataSet.Marca);
-
+            textBoxMarca.Focus();
         }
 
         private void buttonInserir_Click(object sender, EventArgs e)
