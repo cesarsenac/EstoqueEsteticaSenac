@@ -24,16 +24,18 @@ namespace EstoqueEsteticaSenac.Class
     {
         public bool Inserir(string marca, string observacao)
         {
+            // 1) Preparar minha conexao com o banco
             SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
-
+            // 2) Fazer o SQL que vai para o banco
             SqlCommand cmd = new SqlCommand("insert into Marca(Nome_Marca, Observacao_Marca) values('"+ marca +"', '"+ observacao +"')", string_conexao);
 
             try
             {
+                // 3) abrir conexao com banco
                 string_conexao.Open();
-
+                // 4) executei a query no banco
                 cmd.ExecuteNonQuery();
-
+                // 5) Fechar conexao
                 string_conexao.Close();
 
                 return true;
@@ -41,6 +43,7 @@ namespace EstoqueEsteticaSenac.Class
 
             catch(Exception e)
             {
+                //mostrar o erro
                 MessageBox.Show("erro: \n"+e);
                 return false;
             }
@@ -94,6 +97,7 @@ namespace EstoqueEsteticaSenac.Class
             }
         }
 
+        
         public bool MarcaExiste(string marca)
         {
             SqlConnection conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
