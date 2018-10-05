@@ -108,6 +108,12 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
 
         private void FormSaidaProduto_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
+            this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
+            this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
+            // TODO: This line of code loads data into the 'estoqueesteticaDataSet2.SaidaEstoque' table. You can move, or remove it, as needed.
+            this.saidaEstoqueTableAdapter.Fill(this.estoqueesteticaDataSet2.SaidaEstoque);
             // TODO: This line of code loads data into the 'estoqueesteticaDataSet1.SaidaEstoque' table. You can move, or remove it, as needed.
             this.saidaEstoqueTableAdapter1.Fill(this.estoqueesteticaDataSet1.SaidaEstoque);
             textBoxCodigoBarras.Focus();
