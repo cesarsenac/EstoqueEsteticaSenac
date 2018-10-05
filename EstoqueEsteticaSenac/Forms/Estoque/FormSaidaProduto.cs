@@ -108,17 +108,17 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
 
         private void FormSaidaProduto_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
+            this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
+            this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
+            // TODO: This line of code loads data into the 'estoqueesteticaDataSet2.SaidaEstoque' table. You can move, or remove it, as needed.
+            this.saidaEstoqueTableAdapter.Fill(this.estoqueesteticaDataSet2.SaidaEstoque);
+            // TODO: This line of code loads data into the 'estoqueesteticaDataSet1.SaidaEstoque' table. You can move, or remove it, as needed.
+            this.saidaEstoqueTableAdapter1.Fill(this.estoqueesteticaDataSet1.SaidaEstoque);
             textBoxCodigoBarras.Focus();
             // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
             this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            textBoxCodigoProduto.Text = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            textBoxQuantidade.Text = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            maskedTextBoxDataSaida.Text = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            maskedTextBoxDataVencimento.Text = this.dataGridView1.CurrentRow.Cells[3].Value.ToString();
         }
 
         private void buttonAlterar_Click_1(object sender, EventArgs e)
@@ -201,11 +201,18 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                     string marca = se.BuscaMarcaProduto(textBoxCodigoBarras.Text);
                     textBoxMarca.Text = marca;
 
+                    int datavencimento = se.DataVencimento(textBoxCodigoBarras.Text);
+                    maskedTextBoxDataVencimento.Text = Convert.ToString(datavencimento);
+
                     textBoxQuantidade.Focus();
 
 
                 }
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
