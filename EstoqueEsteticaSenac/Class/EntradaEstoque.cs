@@ -7,6 +7,19 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
+//Nome da Classe: EntradaEstoque
+//Desenvolvido por: Gabriel Viana Teodoro - gabriel2000_teodoro@hotmail.com
+//Data: 26/09/2018
+//Descrição da classe: Esta classe foi criada para realizar a entrada de produtos no estoque
+
+//      Metodos:
+//          - Inserir: Faz a inserção da Entrada no banco (Pronto)
+//          - Alterar: Faz a atualização de uma entrada no banco (Pronto)
+//          - Excluir:  deleta alguma entrada incorreta no banco (Pronto)
+//      Sub Metodos:    
+//          - BuscaIdProduto:
+//          - BuscaProduto:
+//          - BuscaMarca:
 namespace EstoqueEsteticaSenac.Classes
 {
     class EntradaEstoque
