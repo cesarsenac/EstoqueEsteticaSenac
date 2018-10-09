@@ -49,17 +49,21 @@
             this.maskedTextBoxDataVencimento = new System.Windows.Forms.MaskedTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxCodigoBarras = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.estoqueEsteticaDataSet = new EstoqueEsteticaSenac.EstoqueEsteticaDataSet();
             this.saidaEstoqueBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.estoqueEsteticaDataSet = new EstoqueEsteticaSenac.EstoqueEsteticaDataSet();
             this.saidaEstoqueTableAdapter = new EstoqueEsteticaSenac.EstoqueEsteticaDataSetTableAdapters.SaidaEstoqueTableAdapter();
+            this.dataGridViewSaidaEstoque = new System.Windows.Forms.DataGridView();
+            this.saidaEstoqueBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estoqueEsteticaDataSet)).BeginInit();
+            this.iDMarcaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iDProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueEsteticaDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSaidaEstoque)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -253,38 +257,45 @@
             this.textBoxCodigoBarras.TabIndex = 22;
             this.textBoxCodigoBarras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCodigoBarras_KeyPress);
             // 
-            // dataGridView1
+            // saidaEstoqueBindingSource
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.dataGridView1.DataSource = this.saidaEstoqueBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 311);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(568, 220);
-            this.dataGridView1.TabIndex = 23;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.saidaEstoqueBindingSource.DataMember = "SaidaEstoque";
+            this.saidaEstoqueBindingSource.DataSource = this.estoqueEsteticaDataSet;
             // 
             // estoqueEsteticaDataSet
             // 
             this.estoqueEsteticaDataSet.DataSetName = "EstoqueEsteticaDataSet";
             this.estoqueEsteticaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // saidaEstoqueBindingSource
-            // 
-            this.saidaEstoqueBindingSource.DataMember = "SaidaEstoque";
-            this.saidaEstoqueBindingSource.DataSource = this.estoqueEsteticaDataSet;
-            // 
             // saidaEstoqueTableAdapter
             // 
             this.saidaEstoqueTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridViewSaidaEstoque
+            // 
+            this.dataGridViewSaidaEstoque.AllowUserToAddRows = false;
+            this.dataGridViewSaidaEstoque.AllowUserToDeleteRows = false;
+            this.dataGridViewSaidaEstoque.AutoGenerateColumns = false;
+            this.dataGridViewSaidaEstoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSaidaEstoque.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.iDMarcaDataGridViewTextBoxColumn,
+            this.iDProdutoDataGridViewTextBoxColumn});
+            this.dataGridViewSaidaEstoque.DataSource = this.saidaEstoqueBindingSource1;
+            this.dataGridViewSaidaEstoque.Location = new System.Drawing.Point(13, 297);
+            this.dataGridViewSaidaEstoque.Name = "dataGridViewSaidaEstoque";
+            this.dataGridViewSaidaEstoque.ReadOnly = true;
+            this.dataGridViewSaidaEstoque.Size = new System.Drawing.Size(671, 234);
+            this.dataGridViewSaidaEstoque.TabIndex = 23;
+            this.dataGridViewSaidaEstoque.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSaidaEstoque_CellContentClick);
+            // 
+            // saidaEstoqueBindingSource1
+            // 
+            this.saidaEstoqueBindingSource1.DataMember = "SaidaEstoque";
+            this.saidaEstoqueBindingSource1.DataSource = this.estoqueEsteticaDataSet;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -314,12 +325,26 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
+            // iDMarcaDataGridViewTextBoxColumn
+            // 
+            this.iDMarcaDataGridViewTextBoxColumn.DataPropertyName = "ID_Marca";
+            this.iDMarcaDataGridViewTextBoxColumn.HeaderText = "ID_Marca";
+            this.iDMarcaDataGridViewTextBoxColumn.Name = "iDMarcaDataGridViewTextBoxColumn";
+            this.iDMarcaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // iDProdutoDataGridViewTextBoxColumn
+            // 
+            this.iDProdutoDataGridViewTextBoxColumn.DataPropertyName = "ID_Produto";
+            this.iDProdutoDataGridViewTextBoxColumn.HeaderText = "ID_Produto";
+            this.iDProdutoDataGridViewTextBoxColumn.Name = "iDProdutoDataGridViewTextBoxColumn";
+            this.iDProdutoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // FormSaidaProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 9F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 587);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(816, 587);
+            this.Controls.Add(this.dataGridViewSaidaEstoque);
             this.Controls.Add(this.textBoxCodigoBarras);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.maskedTextBoxDataVencimento);
@@ -347,9 +372,10 @@
             this.Name = "FormSaidaProduto";
             this.Text = "FormSaidaProduto";
             this.Load += new System.EventHandler(this.FormSaidaProduto_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estoqueEsteticaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueEsteticaDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSaidaEstoque)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -380,13 +406,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataVencimentoDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxCodigoBarras;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private EstoqueEsteticaDataSet estoqueEsteticaDataSet;
         private System.Windows.Forms.BindingSource saidaEstoqueBindingSource;
         private EstoqueEsteticaDataSetTableAdapters.SaidaEstoqueTableAdapter saidaEstoqueTableAdapter;
+        private System.Windows.Forms.DataGridView dataGridViewSaidaEstoque;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDMarcaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDProdutoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource saidaEstoqueBindingSource1;
     }
 }
