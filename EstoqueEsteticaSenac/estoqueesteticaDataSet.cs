@@ -34,14 +34,9 @@ namespace EstoqueEsteticaSenac.EstoqueEsteticaDataSetTableAdapters
 namespace EstoqueEsteticaSenac
 {
 
-
-    public partial class EstoqueEsteticaDataSet
-    {
-    }
-}
-namespace EstoqueEsteticaSenac {
+namespace EstoqueEsteticaSenac.estoqueesteticaDataSetTableAdapters {
     
     
-    public partial class EstoqueEsteticaDataSet {
+    public partial class usuariosTableAdapter {
     }
 }
