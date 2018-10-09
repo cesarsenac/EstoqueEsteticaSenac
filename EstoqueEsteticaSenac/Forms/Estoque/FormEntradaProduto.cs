@@ -21,7 +21,9 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
 
         private void FormEntradaProduto_Load(object sender, EventArgs e)
         {
-            
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.EntradaEstoque' table. You can move, or remove it, as needed.
+            this.entradaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.EntradaEstoque);
+
             // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.EntradaEstoque' table. You can move, or remove it, as needed.
             this.entradaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.EntradaEstoque);
 
