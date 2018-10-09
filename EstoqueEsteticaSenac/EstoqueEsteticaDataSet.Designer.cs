@@ -36,13 +36,7 @@ namespace EstoqueEsteticaSenac {
         
         private global::System.Data.DataRelation relationFK__EntradaEs__ID_Ma__6383C8BA;
         
-        private global::System.Data.DataRelation relationFK__EntradaEstoq__ID__656C112C;
-        
-        private global::System.Data.DataRelation relationFK__Produtos__ID_Mar__619B8048;
-        
         private global::System.Data.DataRelation relationFK__SaidaEsto__ID_Ma__6477ECF3;
-        
-        private global::System.Data.DataRelation relationFK__SaidaEstoque__ID__66603565;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -301,10 +295,7 @@ namespace EstoqueEsteticaSenac {
                 }
             }
             this.relationFK__EntradaEs__ID_Ma__6383C8BA = this.Relations["FK__EntradaEs__ID_Ma__6383C8BA"];
-            this.relationFK__EntradaEstoq__ID__656C112C = this.Relations["FK__EntradaEstoq__ID__656C112C"];
-            this.relationFK__Produtos__ID_Mar__619B8048 = this.Relations["FK__Produtos__ID_Mar__619B8048"];
             this.relationFK__SaidaEsto__ID_Ma__6477ECF3 = this.Relations["FK__SaidaEsto__ID_Ma__6477ECF3"];
-            this.relationFK__SaidaEstoque__ID__66603565 = this.Relations["FK__SaidaEstoque__ID__66603565"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -329,22 +320,10 @@ namespace EstoqueEsteticaSenac {
                         this.tableMarca.ID_MarcaColumn}, new global::System.Data.DataColumn[] {
                         this.tableEntradaEstoque.ID_MarcaColumn}, false);
             this.Relations.Add(this.relationFK__EntradaEs__ID_Ma__6383C8BA);
-            this.relationFK__EntradaEstoq__ID__656C112C = new global::System.Data.DataRelation("FK__EntradaEstoq__ID__656C112C", new global::System.Data.DataColumn[] {
-                        this.tableProdutos.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableEntradaEstoque.ID_ProdutoColumn}, false);
-            this.Relations.Add(this.relationFK__EntradaEstoq__ID__656C112C);
-            this.relationFK__Produtos__ID_Mar__619B8048 = new global::System.Data.DataRelation("FK__Produtos__ID_Mar__619B8048", new global::System.Data.DataColumn[] {
-                        this.tableMarca.ID_MarcaColumn}, new global::System.Data.DataColumn[] {
-                        this.tableProdutos.ID_MarcaColumn}, false);
-            this.Relations.Add(this.relationFK__Produtos__ID_Mar__619B8048);
             this.relationFK__SaidaEsto__ID_Ma__6477ECF3 = new global::System.Data.DataRelation("FK__SaidaEsto__ID_Ma__6477ECF3", new global::System.Data.DataColumn[] {
                         this.tableMarca.ID_MarcaColumn}, new global::System.Data.DataColumn[] {
                         this.tableSaidaEstoque.ID_MarcaColumn}, false);
             this.Relations.Add(this.relationFK__SaidaEsto__ID_Ma__6477ECF3);
-            this.relationFK__SaidaEstoque__ID__66603565 = new global::System.Data.DataRelation("FK__SaidaEstoque__ID__66603565", new global::System.Data.DataColumn[] {
-                        this.tableProdutos.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSaidaEstoque.ID_ProdutoColumn}, false);
-            this.Relations.Add(this.relationFK__SaidaEstoque__ID__66603565);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -584,7 +563,7 @@ namespace EstoqueEsteticaSenac {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public EntradaEstoqueRow AddEntradaEstoqueRow(int Quantidade, int DataEntrada, int DataVencimento, MarcaRow parentMarcaRowByFK__EntradaEs__ID_Ma__6383C8BA, ProdutosRow parentProdutosRowByFK__EntradaEstoq__ID__656C112C) {
+            public EntradaEstoqueRow AddEntradaEstoqueRow(int Quantidade, int DataEntrada, int DataVencimento, MarcaRow parentMarcaRowByFK__EntradaEs__ID_Ma__6383C8BA, int ID_Produto) {
                 EntradaEstoqueRow rowEntradaEstoqueRow = ((EntradaEstoqueRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -592,12 +571,9 @@ namespace EstoqueEsteticaSenac {
                         DataEntrada,
                         DataVencimento,
                         null,
-                        null};
+                        ID_Produto};
                 if ((parentMarcaRowByFK__EntradaEs__ID_Ma__6383C8BA != null)) {
                     columnValuesArray[4] = parentMarcaRowByFK__EntradaEs__ID_Ma__6383C8BA[0];
-                }
-                if ((parentProdutosRowByFK__EntradaEstoq__ID__656C112C != null)) {
-                    columnValuesArray[5] = parentProdutosRowByFK__EntradaEstoq__ID__656C112C[0];
                 }
                 rowEntradaEstoqueRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEntradaEstoqueRow);
@@ -1088,15 +1064,15 @@ namespace EstoqueEsteticaSenac {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ProdutosDataTable : global::System.Data.TypedTableBase<ProdutosRow> {
             
-            private global::System.Data.DataColumn columnID;
-            
             private global::System.Data.DataColumn columnNomeProduto;
             
             private global::System.Data.DataColumn columnCodigoDeBarras;
             
             private global::System.Data.DataColumn columnObservacoes;
             
-            private global::System.Data.DataColumn columnID_Marca;
+            private global::System.Data.DataColumn columnNome_Marca;
+            
+            private global::System.Data.DataColumn columnID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -1133,14 +1109,6 @@ namespace EstoqueEsteticaSenac {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
-                get {
-                    return this.columnID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn NomeProdutoColumn {
                 get {
                     return this.columnNomeProduto;
@@ -1165,9 +1133,17 @@ namespace EstoqueEsteticaSenac {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ID_MarcaColumn {
+            public global::System.Data.DataColumn Nome_MarcaColumn {
                 get {
-                    return this.columnID_Marca;
+                    return this.columnNome_Marca;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
                 }
             }
             
@@ -1208,17 +1184,14 @@ namespace EstoqueEsteticaSenac {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProdutosRow AddProdutosRow(string NomeProduto, string CodigoDeBarras, string Observacoes, MarcaRow parentMarcaRowByFK__Produtos__ID_Mar__619B8048) {
+            public ProdutosRow AddProdutosRow(string NomeProduto, string CodigoDeBarras, string Observacoes, string Nome_Marca) {
                 ProdutosRow rowProdutosRow = ((ProdutosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
                         NomeProduto,
                         CodigoDeBarras,
                         Observacoes,
+                        Nome_Marca,
                         null};
-                if ((parentMarcaRowByFK__Produtos__ID_Mar__619B8048 != null)) {
-                    columnValuesArray[4] = parentMarcaRowByFK__Produtos__ID_Mar__619B8048[0];
-                }
                 rowProdutosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProdutosRow);
                 return rowProdutosRow;
@@ -1248,40 +1221,42 @@ namespace EstoqueEsteticaSenac {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
-                this.columnID = base.Columns["ID"];
                 this.columnNomeProduto = base.Columns["NomeProduto"];
                 this.columnCodigoDeBarras = base.Columns["CodigoDeBarras"];
                 this.columnObservacoes = base.Columns["Observacoes"];
-                this.columnID_Marca = base.Columns["ID_Marca"];
+                this.columnNome_Marca = base.Columns["Nome_Marca"];
+                this.columnID = base.Columns["ID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
                 this.columnNomeProduto = new global::System.Data.DataColumn("NomeProduto", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNomeProduto);
                 this.columnCodigoDeBarras = new global::System.Data.DataColumn("CodigoDeBarras", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCodigoDeBarras);
                 this.columnObservacoes = new global::System.Data.DataColumn("Observacoes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnObservacoes);
-                this.columnID_Marca = new global::System.Data.DataColumn("ID_Marca", typeof(short), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID_Marca);
+                this.columnNome_Marca = new global::System.Data.DataColumn("Nome_Marca", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNome_Marca);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
-                this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
-                this.columnID.AllowDBNull = false;
-                this.columnID.ReadOnly = true;
-                this.columnID.Unique = true;
                 this.columnNomeProduto.AllowDBNull = false;
                 this.columnNomeProduto.MaxLength = 255;
                 this.columnCodigoDeBarras.AllowDBNull = false;
                 this.columnCodigoDeBarras.MaxLength = 13;
                 this.columnObservacoes.AllowDBNull = false;
                 this.columnObservacoes.MaxLength = 8000;
+                this.columnNome_Marca.AllowDBNull = false;
+                this.columnNome_Marca.MaxLength = 100;
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnID.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1545,7 +1520,7 @@ namespace EstoqueEsteticaSenac {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SaidaEstoqueRow AddSaidaEstoqueRow(int Quantidade, int DataSaida, int DataVencimento, MarcaRow parentMarcaRowByFK__SaidaEsto__ID_Ma__6477ECF3, ProdutosRow parentProdutosRowByFK__SaidaEstoque__ID__66603565) {
+            public SaidaEstoqueRow AddSaidaEstoqueRow(int Quantidade, int DataSaida, int DataVencimento, MarcaRow parentMarcaRowByFK__SaidaEsto__ID_Ma__6477ECF3, int ID_Produto) {
                 SaidaEstoqueRow rowSaidaEstoqueRow = ((SaidaEstoqueRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1553,12 +1528,9 @@ namespace EstoqueEsteticaSenac {
                         DataSaida,
                         DataVencimento,
                         null,
-                        null};
+                        ID_Produto};
                 if ((parentMarcaRowByFK__SaidaEsto__ID_Ma__6477ECF3 != null)) {
                     columnValuesArray[4] = parentMarcaRowByFK__SaidaEsto__ID_Ma__6477ECF3[0];
-                }
-                if ((parentProdutosRowByFK__SaidaEstoque__ID__66603565 != null)) {
-                    columnValuesArray[5] = parentProdutosRowByFK__SaidaEstoque__ID__66603565[0];
                 }
                 rowSaidaEstoqueRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSaidaEstoqueRow);
@@ -2209,17 +2181,6 @@ namespace EstoqueEsteticaSenac {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProdutosRow ProdutosRow {
-                get {
-                    return ((ProdutosRow)(this.GetParentRow(this.Table.ParentRelations["FK__EntradaEstoq__ID__656C112C"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__EntradaEstoq__ID__656C112C"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsID_MarcaNull() {
                 return this.IsNull(this.tableEntradaEstoque.ID_MarcaColumn);
             }
@@ -2320,17 +2281,6 @@ namespace EstoqueEsteticaSenac {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProdutosRow[] GetProdutosRows() {
-                if ((this.Table.ChildRelations["FK__Produtos__ID_Mar__619B8048"] == null)) {
-                    return new ProdutosRow[0];
-                }
-                else {
-                    return ((ProdutosRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Produtos__ID_Mar__619B8048"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public SaidaEstoqueRow[] GetSaidaEstoqueRows() {
                 if ((this.Table.ChildRelations["FK__SaidaEsto__ID_Ma__6477ECF3"] == null)) {
                     return new SaidaEstoqueRow[0];
@@ -2353,17 +2303,6 @@ namespace EstoqueEsteticaSenac {
             internal ProdutosRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableProdutos = ((ProdutosDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int ID {
-                get {
-                    return ((int)(this[this.tableProdutos.IDColumn]));
-                }
-                set {
-                    this[this.tableProdutos.IDColumn] = value;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2401,62 +2340,23 @@ namespace EstoqueEsteticaSenac {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public short ID_Marca {
+            public string Nome_Marca {
                 get {
-                    try {
-                        return ((short)(this[this.tableProdutos.ID_MarcaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ID_Marca\' in table \'Produtos\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableProdutos.Nome_MarcaColumn]));
                 }
                 set {
-                    this[this.tableProdutos.ID_MarcaColumn] = value;
+                    this[this.tableProdutos.Nome_MarcaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public MarcaRow MarcaRow {
+            public int ID {
                 get {
-                    return ((MarcaRow)(this.GetParentRow(this.Table.ParentRelations["FK__Produtos__ID_Mar__619B8048"])));
+                    return ((int)(this[this.tableProdutos.IDColumn]));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Produtos__ID_Mar__619B8048"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsID_MarcaNull() {
-                return this.IsNull(this.tableProdutos.ID_MarcaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetID_MarcaNull() {
-                this[this.tableProdutos.ID_MarcaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public EntradaEstoqueRow[] GetEntradaEstoqueRows() {
-                if ((this.Table.ChildRelations["FK__EntradaEstoq__ID__656C112C"] == null)) {
-                    return new EntradaEstoqueRow[0];
-                }
-                else {
-                    return ((EntradaEstoqueRow[])(base.GetChildRows(this.Table.ChildRelations["FK__EntradaEstoq__ID__656C112C"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SaidaEstoqueRow[] GetSaidaEstoqueRows() {
-                if ((this.Table.ChildRelations["FK__SaidaEstoque__ID__66603565"] == null)) {
-                    return new SaidaEstoqueRow[0];
-                }
-                else {
-                    return ((SaidaEstoqueRow[])(base.GetChildRows(this.Table.ChildRelations["FK__SaidaEstoque__ID__66603565"])));
+                    this[this.tableProdutos.IDColumn] = value;
                 }
             }
         }
@@ -2559,17 +2459,6 @@ namespace EstoqueEsteticaSenac {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK__SaidaEsto__ID_Ma__6477ECF3"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProdutosRow ProdutosRow {
-                get {
-                    return ((ProdutosRow)(this.GetParentRow(this.Table.ParentRelations["FK__SaidaEstoque__ID__66603565"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__SaidaEstoque__ID__66603565"]);
                 }
             }
             
@@ -3741,11 +3630,11 @@ SELECT ID_Marca, Nome_Marca, Observacao_Marca FROM Marca WHERE (ID_Marca = @ID_M
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Produtos";
-            tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("NomeProduto", "NomeProduto");
             tableMapping.ColumnMappings.Add("CodigoDeBarras", "CodigoDeBarras");
             tableMapping.ColumnMappings.Add("Observacoes", "Observacoes");
-            tableMapping.ColumnMappings.Add("ID_Marca", "ID_Marca");
+            tableMapping.ColumnMappings.Add("Nome_Marca", "Nome_Marca");
+            tableMapping.ColumnMappings.Add("ID", "ID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -3797,7 +3686,9 @@ SELECT ID, NomeProduto, CodigoDeBarras, Observacoes, ID_Marca FROM Produtos WHER
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, NomeProduto, CodigoDeBarras, Observacoes, ID_Marca FROM dbo.Produtos";
+            this._commandCollection[0].CommandText = "SELECT        Produtos.ID, Produtos.NomeProduto, Produtos.CodigoDeBarras, Produto" +
+                "s.Observacoes, Marca.Nome_Marca\r\nFROM            Produtos INNER JOIN\r\n          " +
+                "               Marca ON Produtos.ID_Marca = Marca.ID_Marca";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5076,21 +4967,21 @@ SELECT id, nome, login, email, senha, ultimo_login, administrador FROM usuarios 
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._produtosTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Produtos.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._produtosTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._entradaEstoqueTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.EntradaEstoque.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._entradaEstoqueTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._produtosTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Produtos.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._produtosTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -5130,19 +5021,19 @@ SELECT id, nome, login, email, senha, ultimo_login, administrador FROM usuarios 
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._produtosTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Produtos.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._produtosTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._entradaEstoqueTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.EntradaEstoque.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._entradaEstoqueTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._produtosTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Produtos.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._produtosTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -5188,19 +5079,19 @@ SELECT id, nome, login, email, senha, ultimo_login, administrador FROM usuarios 
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._entradaEstoqueTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.EntradaEstoque.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._entradaEstoqueTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._produtosTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Produtos.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._produtosTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._entradaEstoqueTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.EntradaEstoque.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._entradaEstoqueTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

@@ -20,6 +20,18 @@ namespace EstoqueEsteticaSenac.Forms
 
         private void FormProduto_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Marca' table. You can move, or remove it, as needed.
+            this.marcaTableAdapter.Fill(this.estoqueEsteticaDataSet.Marca);
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Produtos' table. You can move, or remove it, as needed.
+            this.produtosTableAdapter.Fill(this.estoqueEsteticaDataSet.Produtos);
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Marca' table. You can move, or remove it, as needed.
+            this.marcaTableAdapter.Fill(this.estoqueEsteticaDataSet.Marca);
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Produtos' table. You can move, or remove it, as needed.
+            this.produtosTableAdapter.Fill(this.estoqueEsteticaDataSet.Produtos);
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Marca' table. You can move, or remove it, as needed.
+            this.marcaTableAdapter.Fill(this.estoqueEsteticaDataSet.Marca);
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Produtos' table. You can move, or remove it, as needed.
+            this.produtosTableAdapter.Fill(this.estoqueEsteticaDataSet.Produtos);
             // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Produtos' table. You can move, or remove it, as needed.
             this.produtosTableAdapter.Fill(this.estoqueEsteticaDataSet.Produtos);
             // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.Marca' table. You can move, or remove it, as needed.
@@ -212,7 +224,7 @@ namespace EstoqueEsteticaSenac.Forms
             }
         }
 
-        private void dataGridViewProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewProdutos_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             textBoxID.Text = this.dataGridViewProdutos.CurrentRow.Cells[0].Value.ToString();
             textBoxProduto.Text = this.dataGridViewProdutos.CurrentRow.Cells[1].Value.ToString();
