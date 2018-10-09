@@ -53,17 +53,14 @@
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxCodigoBarras = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.estoqueesteticaDataSet1 = new EstoqueEsteticaSenac.estoqueesteticaDataSet1();
             this.saidaEstoqueBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.saidaEstoqueTableAdapter1 = new EstoqueEsteticaSenac.estoqueesteticaDataSet1TableAdapters.SaidaEstoqueTableAdapter();
             this.saidaEstoqueBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.estoqueEsteticaDataSet = new EstoqueEsteticaSenac.EstoqueEsteticaDataSet();
             this.saidaEstoqueTableAdapter = new EstoqueEsteticaSenac.EstoqueEsteticaDataSetTableAdapters.SaidaEstoqueTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoque2BindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoque2BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estoqueesteticaDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();            
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estoqueEsteticaDataSet)).BeginInit();
@@ -283,17 +280,13 @@
             // 
             // estoqueesteticaDataSet1
             // 
-            this.estoqueesteticaDataSet1.DataSetName = "estoqueesteticaDataSet1";
-            this.estoqueesteticaDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // saidaEstoqueBindingSource2
             // 
             this.saidaEstoqueBindingSource2.DataMember = "SaidaEstoque";
-            this.saidaEstoqueBindingSource2.DataSource = this.estoqueesteticaDataSet1;
             // 
             // saidaEstoqueTableAdapter1
             // 
-            this.saidaEstoqueTableAdapter1.ClearBeforeFill = true;
             // 
             // saidaEstoqueBindingSource1
             // 
@@ -346,7 +339,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoque2BindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoque2BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estoqueesteticaDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.estoqueEsteticaDataSet)).EndInit();
@@ -387,8 +379,6 @@
         private System.Windows.Forms.BindingSource saidaEstoqueBindingSource1;
         private EstoqueEsteticaDataSetTableAdapters.SaidaEstoqueTableAdapter saidaEstoqueTableAdapter;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private estoqueesteticaDataSet1 estoqueesteticaDataSet1;
         private System.Windows.Forms.BindingSource saidaEstoqueBindingSource2;
-        private estoqueesteticaDataSet1TableAdapters.SaidaEstoqueTableAdapter saidaEstoqueTableAdapter1;
     }
 }

@@ -20,7 +20,7 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
         }
 
         private void FormEntradaProduto_Load(object sender, EventArgs e)
-        {
+        {            
             // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.EntradaEstoque' table. You can move, or remove it, as needed.
             this.entradaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.EntradaEstoque);
 
@@ -154,13 +154,6 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
             this.Close();
         }
              
-        //private void dataGridViewEntradaEstoque_CellClick(object sender, DataGridViewCellEventArgs e)
-        //{
-         //   textBoxCodigoProduto.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[0].Value.ToString();
-         //   textBoxQuantidade.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[1].Value.ToString();
-         //   maskedTextBoxDataEntrada.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[2].Value.ToString();
-         //   maskedTextBoxVencimento.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[3].Value.ToString();
-        //}
 
         private void textBoxQuantidade_KeyPress_1(object sender, KeyPressEventArgs e)
         {
@@ -207,8 +200,12 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
 
         private void dataGridViewEntradaEstoque_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-          
-
+            textBoxCodigoProduto.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[0].Value.ToString();
+            maskedTextBoxDataEntrada.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[1].Value.ToString();
+            textBoxProduto.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[2].Value.ToString();
+            textBoxMarca.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[3].Value.ToString();
+            textBoxQuantidade.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[4].Value.ToString();
+            maskedTextBoxVencimento.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[5].Value.ToString();
         }
     }
 }

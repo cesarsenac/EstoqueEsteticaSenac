@@ -107,12 +107,11 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
         }
 
         private void FormSaidaProduto_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'estoqueesteticaDataSet1.SaidaEstoque' table. You can move, or remove it, as needed.
-            this.saidaEstoqueTableAdapter1.Fill(this.estoqueesteticaDataSet1.SaidaEstoque);
-            textBoxCodigoBarras.Focus();
+        {            
             // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
             this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
+
+            textBoxCodigoBarras.Focus();
         }
 
         private void buttonAlterar_Click_1(object sender, EventArgs e)
@@ -195,8 +194,8 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                     string marca = se.BuscaMarcaProduto(textBoxCodigoBarras.Text);
                     textBoxMarca.Text = marca;
 
-                    int datavencimento = se.DataVencimento(textBoxCodigoBarras.Text);
-                    maskedTextBoxDataVencimento.Text = Convert.ToString(datavencimento);
+                    //int datavencimento = se.DataVencimento(textBoxCodigoBarras.Text);
+                    //maskedTextBoxDataVencimento.Text = Convert.ToString(datavencimento);
 
                     textBoxQuantidade.Focus();
 
