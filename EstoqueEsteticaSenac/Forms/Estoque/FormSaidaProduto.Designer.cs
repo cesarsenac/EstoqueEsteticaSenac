@@ -50,14 +50,20 @@
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxCodigoBarras = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.estoqueesteticaDataSet1 = new EstoqueEsteticaSenac.estoqueesteticaDataSet1();
+            this.saidaEstoqueBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.saidaEstoqueTableAdapter1 = new EstoqueEsteticaSenac.estoqueesteticaDataSet1TableAdapters.SaidaEstoqueTableAdapter();
+            this.saidaEstoqueBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.estoqueEsteticaDataSet = new EstoqueEsteticaSenac.EstoqueEsteticaDataSet();
             this.saidaEstoqueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saidaEstoqueTableAdapter = new EstoqueEsteticaSenac.EstoqueEsteticaDataSetTableAdapters.SaidaEstoqueTableAdapter();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saidaEstoque2BindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saidaEstoque2BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueesteticaDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estoqueEsteticaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -274,24 +280,17 @@
             // 
             // estoqueEsteticaDataSet
             // 
-            this.estoqueEsteticaDataSet.DataSetName = "EstoqueEsteticaDataSet";
-            this.estoqueEsteticaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.estoqueesteticaDataSet1.DataSetName = "estoqueesteticaDataSet1";
+            this.estoqueesteticaDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // saidaEstoqueBindingSource
             // 
-            this.saidaEstoqueBindingSource.DataMember = "SaidaEstoque";
-            this.saidaEstoqueBindingSource.DataSource = this.estoqueEsteticaDataSet;
-            // 
-            // saidaEstoqueTableAdapter
-            // 
-            this.saidaEstoqueTableAdapter.ClearBeforeFill = true;
+            this.saidaEstoqueBindingSource2.DataMember = "SaidaEstoque";
+            this.saidaEstoqueBindingSource2.DataSource = this.estoqueesteticaDataSet1;
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "CodigoProduto";
-            this.dataGridViewTextBoxColumn1.HeaderText = "CodigoProduto";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.saidaEstoqueTableAdapter1.ClearBeforeFill = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -348,6 +347,9 @@
             this.Text = "FormSaidaProduto";
             this.Load += new System.EventHandler(this.FormSaidaProduto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueesteticaDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.estoqueEsteticaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saidaEstoqueBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -384,9 +386,9 @@
         private EstoqueEsteticaDataSet estoqueEsteticaDataSet;
         private System.Windows.Forms.BindingSource saidaEstoqueBindingSource;
         private EstoqueEsteticaDataSetTableAdapters.SaidaEstoqueTableAdapter saidaEstoqueTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private estoqueesteticaDataSet1 estoqueesteticaDataSet1;
+        private System.Windows.Forms.BindingSource saidaEstoqueBindingSource2;
+        private estoqueesteticaDataSet1TableAdapters.SaidaEstoqueTableAdapter saidaEstoqueTableAdapter1;
     }
 }
