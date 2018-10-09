@@ -22,6 +22,7 @@ namespace EstoqueEsteticaSenac.Class
 {
     class Produto
     {
+        //Atualiza um produto no banco de dados
         public bool Atualizar(int ID, string Produto, string CodigoDeBarras, string Observacoes, int Marca)
         {
             SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
@@ -43,6 +44,8 @@ namespace EstoqueEsteticaSenac.Class
             }
         }
 
+
+        //Insere um produto no banco de dados 
         public bool Inserir(string NomeProduto, string CodigoDeBarras, string Observacoes, int Marca)
         {
             SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
@@ -70,6 +73,7 @@ namespace EstoqueEsteticaSenac.Class
             }
         }
 
+        //Faz a deleção de um produto no banco de dados relacionado com o ID
         public bool Deletar(int ID)
         {
             SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
@@ -135,6 +139,7 @@ namespace EstoqueEsteticaSenac.Class
 
         }
 
+        //Faz a busca do ID_Marca relacionando com o Nome_Marca
         public int BuscaIdMarca(string marca)
         {
             SqlConnection conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
@@ -149,7 +154,7 @@ namespace EstoqueEsteticaSenac.Class
             }
             catch (Exception e)
             {
-                System.Windows.Forms.MessageBox.Show(""+e);
+                MessageBox.Show(""+e);
                 return 0;
             }
 
