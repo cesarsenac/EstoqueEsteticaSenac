@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,10 +49,6 @@
             this.entradaEstoque1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.entradaEstoqueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewEntradaEstoque = new System.Windows.Forms.DataGridView();
-            this.codigoProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataEntradaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataVencimentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.entradaEstoque1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.esteticaDataSet5BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label8 = new System.Windows.Forms.Label();
@@ -245,11 +237,6 @@
             // 
             this.dataGridViewEntradaEstoque.AutoGenerateColumns = false;
             this.dataGridViewEntradaEstoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEntradaEstoque.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codigoProdutoDataGridViewTextBoxColumn,
-            this.quantidadeDataGridViewTextBoxColumn,
-            this.dataEntradaDataGridViewTextBoxColumn,
-            this.dataVencimentoDataGridViewTextBoxColumn});
             this.dataGridViewEntradaEstoque.DataSource = this.entradaEstoque1BindingSource1;
             this.dataGridViewEntradaEstoque.Location = new System.Drawing.Point(12, 341);
             this.dataGridViewEntradaEstoque.Name = "dataGridViewEntradaEstoque";
@@ -257,63 +244,9 @@
             this.dataGridViewEntradaEstoque.TabIndex = 19;
             this.dataGridViewEntradaEstoque.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEntradaEstoque_CellClick);
             // 
-            // codigoProdutoDataGridViewTextBoxColumn
-            // 
-            this.codigoProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.codigoProdutoDataGridViewTextBoxColumn.DataPropertyName = "CodigoProduto";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.codigoProdutoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.codigoProdutoDataGridViewTextBoxColumn.HeaderText = "CodigoProduto";
-            this.codigoProdutoDataGridViewTextBoxColumn.Name = "codigoProdutoDataGridViewTextBoxColumn";
-            this.codigoProdutoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codigoProdutoDataGridViewTextBoxColumn.Width = 140;
-            // 
-            // quantidadeDataGridViewTextBoxColumn
-            // 
-            this.quantidadeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.quantidadeDataGridViewTextBoxColumn.DataPropertyName = "Quantidade";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.quantidadeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.quantidadeDataGridViewTextBoxColumn.HeaderText = "Quantidade";
-            this.quantidadeDataGridViewTextBoxColumn.Name = "quantidadeDataGridViewTextBoxColumn";
-            this.quantidadeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.quantidadeDataGridViewTextBoxColumn.Width = 117;
-            // 
-            // dataEntradaDataGridViewTextBoxColumn
-            // 
-            this.dataEntradaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataEntradaDataGridViewTextBoxColumn.DataPropertyName = "DataEntrada";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataEntradaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataEntradaDataGridViewTextBoxColumn.HeaderText = "DataEntrada";
-            this.dataEntradaDataGridViewTextBoxColumn.Name = "dataEntradaDataGridViewTextBoxColumn";
-            this.dataEntradaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dataEntradaDataGridViewTextBoxColumn.Width = 126;
-            // 
-            // dataVencimentoDataGridViewTextBoxColumn
-            // 
-            this.dataVencimentoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataVencimentoDataGridViewTextBoxColumn.DataPropertyName = "DataVencimento";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataVencimentoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataVencimentoDataGridViewTextBoxColumn.HeaderText = "DataVencimento";
-            this.dataVencimentoDataGridViewTextBoxColumn.Name = "dataVencimentoDataGridViewTextBoxColumn";
-            this.dataVencimentoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dataVencimentoDataGridViewTextBoxColumn.Width = 154;
-            // 
             // entradaEstoque1BindingSource1
             // 
             this.entradaEstoque1BindingSource1.DataMember = "EntradaEstoque1";
-            // 
-            // esteticaDataSet5
-            // 
-            // 
-            // esteticaDataSet5BindingSource
-            // 
-            this.esteticaDataSet5BindingSource.Position = 0;
-            // 
-            // entradaEstoque1TableAdapter1
-            //             
             // 
             // label8
             // 
