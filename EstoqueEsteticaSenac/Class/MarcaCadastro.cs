@@ -24,16 +24,21 @@ namespace EstoqueEsteticaSenac.Class
     {
         public bool Inserir(string marca, string observacao)
         {
-            SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
+            // se der certo a inserção no banco,retornar true
+            // se der errado retornar false
 
+            // 1) Preparar minha conexao com o banco
+            SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
+            // 2) Fazer o SQL que vai para o banco
             SqlCommand cmd = new SqlCommand("insert into Marca(Nome_Marca, Observacao_Marca) values('"+ marca +"', '"+ observacao +"')", string_conexao);
 
             try
             {
+                // 3) abrir conexao com banco
                 string_conexao.Open();
-
+                // 4) executei a query no banco
                 cmd.ExecuteNonQuery();
-
+                // 5) fechar conexao com banco
                 string_conexao.Close();
 
                 return true;
@@ -48,16 +53,21 @@ namespace EstoqueEsteticaSenac.Class
 
         public bool Deletar(int ID)
         {
-            SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
+            // se der certo a inserção no banco,retornar true
+            // se der errado retornar false
 
+            // 1) Preparar minha conexao com o banco
+            SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
+            // 2) Fazer o SQL que vai para o banco
             SqlCommand cmd = new SqlCommand("Delete from Marca where ID_Marca ="+ ID, string_conexao);
 
             try
             {
+                // 3) abrir conexao com banco
                 string_conexao.Open();
-
+                // 4) executei a query no banco
                 cmd.ExecuteNonQuery();
-
+                // 5) fechar conexao com banco
                 string_conexao.Close();
 
                 return true;
@@ -72,16 +82,18 @@ namespace EstoqueEsteticaSenac.Class
 
         public bool Atualizar(int ID, string marca, string observacao)
         {
+            // 1) Preparar minha conexao com o banco
             SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
-
+            // 2) Fazer o SQL que vai para o banco
             SqlCommand cmd = new SqlCommand("UPDATE Marca SET Nome_Marca = '" + marca + "', Observacao_Marca = '" + observacao +"'Where ID_Marca = "+ID, string_conexao);
 
             try
             {
+                // 3) abrir conexao com banco
                 string_conexao.Open();
-
+                // 4) executei a query no banco
                 cmd.ExecuteNonQuery();
-
+                // 5) fechar conexao com banco
                 string_conexao.Close();
 
                 return true;

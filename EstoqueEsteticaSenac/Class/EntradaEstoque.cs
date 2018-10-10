@@ -7,6 +7,20 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
+//Nome da Classe: EntradaEstoque
+//Desenvolvido por: Gabriel Viana Teodoro - gabriel2000_teodoro@hotmail.com
+//Data: 26/09/2018
+//Descrição da classe: Esta classe foi criada para realizar a entrada de produtos no estoque
+
+//      Metodos:
+//          - Inserir: Faz a inserção da Entrada no banco (Pronto)
+//          - Alterar: Faz a atualização de uma entrada no banco (Pronto)
+//          - Excluir:  deleta alguma entrada incorreta no banco (Pronto)
+//      Sub Metodos:    
+//          - BuscaIdProduto: quando o cliente bate o codigodebarras esse sub metodo busca no banco a tabela produto e traz o idproduto correspondente (PRONTO)
+//          - BuscaProduto: quando o cliente bate o codigodebarras esse sub metodo busca no banco a tabela produto e traz o produto correspondente  (PRONTO)
+//          - BuscaMarca: quando o cliente bate o codigodebarras esse sub metodo busca no banco a tabela marca e traz a marca correspondente (PRONTO)
+
 namespace EstoqueEsteticaSenac.Classes
 {
     class EntradaEstoque
@@ -43,8 +57,8 @@ namespace EstoqueEsteticaSenac.Classes
 
         public bool Excluir(int CodigoProduto)
         {
-            SqlConnection string_conexao = new SqlConnection(Properties.Resources.string_conexao);
-            SqlCommand cmd = new SqlCommand("delete from EntradaEstoque where CodigoProduto  = " + CodigoProduto, string_conexao);
+            SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
+            SqlCommand cmd = new SqlCommand("delete from EntradaEstoque where ID  = " + CodigoProduto, string_conexao);
             try
             {
                 string_conexao.Open();
@@ -61,7 +75,7 @@ namespace EstoqueEsteticaSenac.Classes
 
         public bool Alterar(int CodigoProduto, int Quantidade, int DataEntrada, int DataVencimento)
         {
-            SqlConnection string_conexao = new SqlConnection(Properties.Resources.string_conexao);
+            SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
             SqlCommand cmd = new SqlCommand("UPDATE EntradaEstoque SET Quantidade = '" + Quantidade + "', DataEntrada = '" + DataEntrada + "', DataVencimento = '" + DataVencimento + "' WHERE CodigoProduto = " + CodigoProduto, string_conexao);
             try
             {
