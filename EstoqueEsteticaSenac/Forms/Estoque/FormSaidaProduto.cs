@@ -51,6 +51,7 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                     //maskedTextBoxDataVencimento.Text = "";
 
                     //Atualiza o datagridview
+                    this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
                     
                 }
                 else
@@ -90,7 +91,7 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                     maskedTextBoxDataSaida.Text = "";
                     maskedTextBoxDataVencimento.Text = "";
 
-                    
+                    this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
                 }
                 else
                 {
@@ -108,9 +109,11 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
 
         private void FormSaidaProduto_Load(object sender, EventArgs e)
         {
+
+            
+       
+
             textBoxCodigoBarras.Focus();
-            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
-            this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -152,7 +155,7 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                     maskedTextBoxDataSaida.Text = "";
                     maskedTextBoxDataVencimento.Text = "";
 
-                    
+                    this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
                 }
                 else
                 {
@@ -201,12 +204,28 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                     string marca = se.BuscaMarcaProduto(textBoxCodigoBarras.Text);
                     textBoxMarca.Text = marca;
 
+                    int datavencimento = Convert.ToInt32(se.DataVencimento(textBoxCodigoProduto.Text));
+                    MessageBox.Show(Convert.ToString(datavencimento));
+                    maskedTextBoxDataVencimento.Text = Convert.ToString(Convert.ToString(datavencimento));
+
                     textBoxQuantidade.Focus();
 
 
                 }
             }
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxCodigoProduto.Text = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            textBoxQuantidade.Text = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            maskedTextBoxDataSaida.Text = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            textBoxProduto.Text = this.dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            textBoxMarca.Text = this.dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            maskedTextBoxDataVencimento.Text = this.dataGridView1.CurrentRow.Cells[5].Value.ToString();
+
+            
         }
     }
 }

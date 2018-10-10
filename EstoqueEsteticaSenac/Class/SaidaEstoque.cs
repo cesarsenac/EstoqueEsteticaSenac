@@ -107,6 +107,7 @@ namespace EstoqueEsteticaSenac.Classes
                 //DateTime.Now; Pegar hora e data
             }
         }
+
         public string BuscaNomeProduto(string codigodebarras)
         {
             // 1) Preparando conexão.
@@ -136,13 +137,13 @@ namespace EstoqueEsteticaSenac.Classes
             }
         }
 
-        public string BuscaMarcaProduto (string codigodebarras)
+        public string BuscaMarcaProduto(string codigodebarras)
         {
             // 1) Preparando conexão.
             SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
 
             // 2) SQL que vai para o banco.
-            SqlCommand cmd = new SqlCommand("SELECT Marca.Nome_Marca FROM Produtos  INNER JOIN Marca ON Produtos.ID_Marca = Marca.ID_Marca WHERE Produtos.CodigoDeBarras = '"+codigodebarras+"'", string_conexao);
+            SqlCommand cmd = new SqlCommand("SELECT Marca.Nome_Marca FROM Produtos  INNER JOIN Marca ON Produtos.ID_Marca = Marca.ID_Marca WHERE Produtos.CodigoDeBarras = '" + codigodebarras + "'", string_conexao);
 
             try
             {
@@ -157,6 +158,35 @@ namespace EstoqueEsteticaSenac.Classes
                 string_conexao.Close();
 
                 return marca;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro ao gravar no banco de dados \n" + e.Message);
+                return "";
+            }
+        }
+
+        public string DataVencimento(string codigoProduto)
+        {
+            // 1) Preparando conexão.
+            SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
+
+            // 2) SQL que vai para o banco.
+            SqlCommand cmd = new SqlCommand("select EntradaEstoque.DataVencimento From EntradaEstoque WHERE EntradaEstoque.ID_Produto = '" + codigoProduto + "'", string_conexao);
+
+            try
+            {
+                // 3) Abrir a conexão com o banco.
+                string_conexao.Open();
+
+                // 4) Executar query no banco.
+                string vencimento = (string)cmd.ExecuteScalar();
+
+
+                // 5) Fechar conexão com o banco.
+                string_conexao.Close();
+
+                return vencimento;
             }
             catch (Exception e)
             {

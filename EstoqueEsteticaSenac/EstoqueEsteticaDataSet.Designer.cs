@@ -1069,6 +1069,10 @@ namespace EstoqueEsteticaSenac {
             
             private global::System.Data.DataColumn columnDataSaida;
             
+            private global::System.Data.DataColumn columnNome_Marca;
+            
+            private global::System.Data.DataColumn columnNomeProduto;
+            
             private global::System.Data.DataColumn columnDataVencimento;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1130,6 +1134,22 @@ namespace EstoqueEsteticaSenac {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Nome_MarcaColumn {
+                get {
+                    return this.columnNome_Marca;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NomeProdutoColumn {
+                get {
+                    return this.columnNomeProduto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn DataVencimentoColumn {
                 get {
                     return this.columnDataVencimento;
@@ -1173,12 +1193,14 @@ namespace EstoqueEsteticaSenac {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SaidaEstoqueRow AddSaidaEstoqueRow(int Quantidade, int DataSaida, int DataVencimento) {
+            public SaidaEstoqueRow AddSaidaEstoqueRow(int Quantidade, int DataSaida, string Nome_Marca, string NomeProduto, int DataVencimento) {
                 SaidaEstoqueRow rowSaidaEstoqueRow = ((SaidaEstoqueRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Quantidade,
                         DataSaida,
+                        Nome_Marca,
+                        NomeProduto,
                         DataVencimento};
                 rowSaidaEstoqueRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSaidaEstoqueRow);
@@ -1212,6 +1234,8 @@ namespace EstoqueEsteticaSenac {
                 this.columnCodigoProduto = base.Columns["CodigoProduto"];
                 this.columnQuantidade = base.Columns["Quantidade"];
                 this.columnDataSaida = base.Columns["DataSaida"];
+                this.columnNome_Marca = base.Columns["Nome_Marca"];
+                this.columnNomeProduto = base.Columns["NomeProduto"];
                 this.columnDataVencimento = base.Columns["DataVencimento"];
             }
             
@@ -1224,6 +1248,10 @@ namespace EstoqueEsteticaSenac {
                 base.Columns.Add(this.columnQuantidade);
                 this.columnDataSaida = new global::System.Data.DataColumn("DataSaida", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDataSaida);
+                this.columnNome_Marca = new global::System.Data.DataColumn("Nome_Marca", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNome_Marca);
+                this.columnNomeProduto = new global::System.Data.DataColumn("NomeProduto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNomeProduto);
                 this.columnDataVencimento = new global::System.Data.DataColumn("DataVencimento", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDataVencimento);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -1236,6 +1264,10 @@ namespace EstoqueEsteticaSenac {
                 this.columnCodigoProduto.Unique = true;
                 this.columnQuantidade.AllowDBNull = false;
                 this.columnDataSaida.AllowDBNull = false;
+                this.columnNome_Marca.AllowDBNull = false;
+                this.columnNome_Marca.MaxLength = 100;
+                this.columnNomeProduto.AllowDBNull = false;
+                this.columnNomeProduto.MaxLength = 255;
                 this.columnDataVencimento.AllowDBNull = false;
             }
             
@@ -2251,6 +2283,28 @@ namespace EstoqueEsteticaSenac {
                 }
                 set {
                     this[this.tableSaidaEstoque.DataSaidaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Nome_Marca {
+                get {
+                    return ((string)(this[this.tableSaidaEstoque.Nome_MarcaColumn]));
+                }
+                set {
+                    this[this.tableSaidaEstoque.Nome_MarcaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string NomeProduto {
+                get {
+                    return ((string)(this[this.tableSaidaEstoque.NomeProdutoColumn]));
+                }
+                set {
+                    this[this.tableSaidaEstoque.NomeProdutoColumn] = value;
                 }
             }
             
@@ -3479,6 +3533,8 @@ SELECT CodigoProduto, Quantidade, DataEntrada, DataVencimento FROM EntradaEstoqu
             tableMapping.ColumnMappings.Add("CodigoProduto", "CodigoProduto");
             tableMapping.ColumnMappings.Add("Quantidade", "Quantidade");
             tableMapping.ColumnMappings.Add("DataSaida", "DataSaida");
+            tableMapping.ColumnMappings.Add("Nome_Marca", "Nome_Marca");
+            tableMapping.ColumnMappings.Add("NomeProduto", "NomeProduto");
             tableMapping.ColumnMappings.Add("DataVencimento", "DataVencimento");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
@@ -3529,8 +3585,11 @@ SELECT CodigoProduto, Quantidade, DataSaida, DataVencimento FROM SaidaEstoque WH
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT CodigoProduto, Quantidade, DataSaida, DataVencimento FROM dbo.SaidaEstoque" +
-                "";
+            this._commandCollection[0].CommandText = @"SELECT        SaidaEstoque.CodigoProduto, Marca.Nome_Marca, Produtos.NomeProduto, SaidaEstoque.Quantidade, SaidaEstoque.DataSaida, EntradaEstoque.DataVencimento
+FROM            SaidaEstoque INNER JOIN
+                         Produtos ON SaidaEstoque.ID_Produto = Produtos.ID INNER JOIN
+                         Marca ON SaidaEstoque.ID_Marca = Marca.ID_Marca CROSS JOIN
+                         EntradaEstoque";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
