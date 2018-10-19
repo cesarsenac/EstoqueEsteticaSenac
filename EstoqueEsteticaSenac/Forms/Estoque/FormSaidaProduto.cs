@@ -108,6 +108,14 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
 
         private void FormSaidaProduto_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
+            this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
+            this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
+            this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
+            this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
             textBoxCodigoBarras.Focus();
             // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
             this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
@@ -119,6 +127,9 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
             textBoxQuantidade.Text = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
             maskedTextBoxDataSaida.Text = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
             maskedTextBoxDataVencimento.Text = this.dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            textBoxMarca.Text = this.dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            textBoxProduto.Text = this.dataGridView1.CurrentRow.Cells[5].Value.ToString();
+
         }
 
         private void buttonAlterar_Click_1(object sender, EventArgs e)
