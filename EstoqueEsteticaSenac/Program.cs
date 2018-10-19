@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using EstoqueEsteticaSenac.Forms;
 using EstoqueEsteticaSenac.Forms.Cadastro;
 
+
 namespace EstoqueEsteticaSenac
 {
     static class Program

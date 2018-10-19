@@ -56,6 +56,11 @@
             this.textBoxCodigoBarras = new System.Windows.Forms.TextBox();
             this.entradaEstoqueTableAdapter = new EstoqueEsteticaSenac.EstoqueEsteticaDataSetTableAdapters.EntradaEstoqueTableAdapter();
             this.dataGridViewEntradaEstoque = new System.Windows.Forms.DataGridView();
+            this.entradaEstoqueBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.entradaEstoque1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.entradaEstoqueBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.entradaEstoqueBindingSource1)).BeginInit();
@@ -63,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.entradaEstoque1BindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.esteticaDataSet5BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEntradaEstoque)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.entradaEstoqueBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -277,13 +283,53 @@
             // 
             this.dataGridViewEntradaEstoque.AllowUserToAddRows = false;
             this.dataGridViewEntradaEstoque.AllowUserToDeleteRows = false;
+            this.dataGridViewEntradaEstoque.AutoGenerateColumns = false;
             this.dataGridViewEntradaEstoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEntradaEstoque.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.dataGridViewEntradaEstoque.DataSource = this.entradaEstoqueBindingSource2;
             this.dataGridViewEntradaEstoque.Location = new System.Drawing.Point(-56, 371);
             this.dataGridViewEntradaEstoque.Name = "dataGridViewEntradaEstoque";
             this.dataGridViewEntradaEstoque.ReadOnly = true;
             this.dataGridViewEntradaEstoque.Size = new System.Drawing.Size(784, 150);
             this.dataGridViewEntradaEstoque.TabIndex = 22;
             this.dataGridViewEntradaEstoque.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEntradaEstoque_CellContentClick);
+            // 
+            // entradaEstoqueBindingSource2
+            // 
+            this.entradaEstoqueBindingSource2.DataMember = "EntradaEstoque";
+            this.entradaEstoqueBindingSource2.DataSource = this.estoqueEsteticaDataSet;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "CodigoProduto";
+            this.dataGridViewTextBoxColumn1.HeaderText = "CodigoProduto";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Quantidade";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Quantidade";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "DataEntrada";
+            this.dataGridViewTextBoxColumn3.HeaderText = "DataEntrada";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "DataVencimento";
+            this.dataGridViewTextBoxColumn4.HeaderText = "DataVencimento";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // FormEntradaProduto
             // 
@@ -324,6 +370,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.entradaEstoque1BindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.esteticaDataSet5BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEntradaEstoque)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.entradaEstoqueBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,5 +412,10 @@
         private System.Windows.Forms.BindingSource entradaEstoqueBindingSource1;
         private EstoqueEsteticaDataSetTableAdapters.EntradaEstoqueTableAdapter entradaEstoqueTableAdapter;
         private System.Windows.Forms.DataGridView dataGridViewEntradaEstoque;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.BindingSource entradaEstoqueBindingSource2;
     }
 }
