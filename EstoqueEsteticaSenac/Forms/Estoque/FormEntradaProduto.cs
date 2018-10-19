@@ -199,7 +199,7 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                  string marca = ee.BuscaMarca(textBoxCodigoBarras.Text);
                  textBoxMarca.Text = marca;
 
-                    textBoxQuantidade.Focus();
+                 textBoxQuantidade.Focus();
             }
         }
 
