@@ -12,7 +12,7 @@ namespace EstoqueEsteticaSenac.Classes
     class EntradaEstoque
     {
 
-        public bool Inserir(int Quantidade, int DataEntrada, int DataVencimento)
+        public bool Inserir(int Quantidade, int DataEntrada, int DataVencimento, int produto, int marca)
         {
             // se der certo a inserção no banco, retorna true
             // se der errado retorna false
@@ -21,7 +21,7 @@ namespace EstoqueEsteticaSenac.Classes
             SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
 
             //2) fazer o SQL que vai para o banco
-            SqlCommand cmd = new SqlCommand("insert into EntradaEstoque (Quantidade, DataEntrada, DataVencimento) values( '" + Quantidade + "', '" + DataEntrada + "', '" + DataVencimento + "')", string_conexao);
+            SqlCommand cmd = new SqlCommand("INSERT INTO EntradaEstoque (Quantidade, DataEntrada, DataVencimento, ID_Marca, ID_Produto) values( '" + Quantidade + "', '" + DataEntrada + "', '" + DataVencimento + "', '"+marca+"', '"+produto+"')", string_conexao);
 
             try
             {
@@ -92,12 +92,12 @@ namespace EstoqueEsteticaSenac.Classes
                 string_conexao.Open();
 
                 // 4) Executar query no banco.
-                int resultado = (int)cmd.ExecuteScalar();
+                int resultadoIDproduto = (int)cmd.ExecuteScalar();
 
                 // 5) Fechar conexão com o banco.
                 string_conexao.Close();
 
-                return resultado;
+                return resultadoIDproduto;
             }
             catch (Exception e)
             {
@@ -108,7 +108,7 @@ namespace EstoqueEsteticaSenac.Classes
             }
         }
 
-        public string BuscaProduto(string codigodebarras)
+        public string BuscaNomeProduto(string codigodebarras)
         {
             // 1) Preparando conexão.
             SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
@@ -122,12 +122,12 @@ namespace EstoqueEsteticaSenac.Classes
                 string_conexao.Open();
 
                 // 4) Executar query no banco.
-                string resultado = (string)cmd.ExecuteScalar();
+                string resultadoProdutoE = (string)cmd.ExecuteScalar();
 
                 // 5) Fechar conexão com o banco.
                 string_conexao.Close();
 
-                return resultado;
+                return resultadoProdutoE;
             }
             catch (Exception e)
             {
@@ -137,7 +137,7 @@ namespace EstoqueEsteticaSenac.Classes
                 //DateTime.Now; Pegar hora e data
             }
         }
-        public string BuscaMarca(string codigodebarras)
+        public string BuscaNomeMarca(string codigodebarras)
         {
             SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
 
@@ -151,12 +151,12 @@ namespace EstoqueEsteticaSenac.Classes
                 string_conexao.Open();
 
                 // 4) Executar query no banco.
-                string resultado = (string)cmd.ExecuteScalar();
+                string resultadoMarcaE = (string)cmd.ExecuteScalar();
 
                 // 5) Fechar conexão com o banco.
                 string_conexao.Close();
 
-                return resultado;
+                return resultadoMarcaE;
             }
             catch (Exception e)
             {
@@ -165,6 +165,25 @@ namespace EstoqueEsteticaSenac.Classes
 
                 //DateTime.Now; Pegar hora e data
             }
+        }
+        public int BuscaIdMarca(string marca)
+        {
+            SqlConnection conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
+            SqlCommand cmd = new SqlCommand("select ID_MARCA from marca WHERE Nome_Marca = '" + marca + "'", conexao);
+
+            try
+            {
+                conexao.Open();
+                int resultadoIDmarca = Convert.ToInt16(cmd.ExecuteScalar());
+                conexao.Close();
+                return resultadoIDmarca;
+            }
+            catch (Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show("" + e);
+                return 0;
+            }
+
         }
     }
 }

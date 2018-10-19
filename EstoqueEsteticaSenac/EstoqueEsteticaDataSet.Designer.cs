@@ -756,13 +756,17 @@ namespace EstoqueEsteticaSenac {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class EntradaEstoqueDataTable : global::System.Data.TypedTableBase<EntradaEstoqueRow> {
             
-            private global::System.Data.DataColumn columnCodigoProduto;
-            
             private global::System.Data.DataColumn columnQuantidade;
             
             private global::System.Data.DataColumn columnDataEntrada;
             
             private global::System.Data.DataColumn columnDataVencimento;
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnNomeProduto;
+            
+            private global::System.Data.DataColumn columnNome_Marca;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -799,14 +803,6 @@ namespace EstoqueEsteticaSenac {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn CodigoProdutoColumn {
-                get {
-                    return this.columnCodigoProduto;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn QuantidadeColumn {
                 get {
                     return this.columnQuantidade;
@@ -826,6 +822,30 @@ namespace EstoqueEsteticaSenac {
             public global::System.Data.DataColumn DataVencimentoColumn {
                 get {
                     return this.columnDataVencimento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NomeProdutoColumn {
+                get {
+                    return this.columnNomeProduto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Nome_MarcaColumn {
+                get {
+                    return this.columnNome_Marca;
                 }
             }
             
@@ -866,13 +886,15 @@ namespace EstoqueEsteticaSenac {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public EntradaEstoqueRow AddEntradaEstoqueRow(int Quantidade, int DataEntrada, int DataVencimento) {
+            public EntradaEstoqueRow AddEntradaEstoqueRow(int Quantidade, int DataEntrada, int DataVencimento, string NomeProduto, string Nome_Marca) {
                 EntradaEstoqueRow rowEntradaEstoqueRow = ((EntradaEstoqueRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
                         Quantidade,
                         DataEntrada,
-                        DataVencimento};
+                        DataVencimento,
+                        null,
+                        NomeProduto,
+                        Nome_Marca};
                 rowEntradaEstoqueRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEntradaEstoqueRow);
                 return rowEntradaEstoqueRow;
@@ -880,9 +902,9 @@ namespace EstoqueEsteticaSenac {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public EntradaEstoqueRow FindByCodigoProduto(int CodigoProduto) {
+            public EntradaEstoqueRow FindByID(int ID) {
                 return ((EntradaEstoqueRow)(this.Rows.Find(new object[] {
-                            CodigoProduto})));
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -902,34 +924,44 @@ namespace EstoqueEsteticaSenac {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
-                this.columnCodigoProduto = base.Columns["CodigoProduto"];
                 this.columnQuantidade = base.Columns["Quantidade"];
                 this.columnDataEntrada = base.Columns["DataEntrada"];
                 this.columnDataVencimento = base.Columns["DataVencimento"];
+                this.columnID = base.Columns["ID"];
+                this.columnNomeProduto = base.Columns["NomeProduto"];
+                this.columnNome_Marca = base.Columns["Nome_Marca"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnCodigoProduto = new global::System.Data.DataColumn("CodigoProduto", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCodigoProduto);
                 this.columnQuantidade = new global::System.Data.DataColumn("Quantidade", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantidade);
                 this.columnDataEntrada = new global::System.Data.DataColumn("DataEntrada", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDataEntrada);
                 this.columnDataVencimento = new global::System.Data.DataColumn("DataVencimento", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDataVencimento);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnNomeProduto = new global::System.Data.DataColumn("NomeProduto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNomeProduto);
+                this.columnNome_Marca = new global::System.Data.DataColumn("Nome_Marca", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNome_Marca);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnCodigoProduto}, true));
-                this.columnCodigoProduto.AutoIncrement = true;
-                this.columnCodigoProduto.AutoIncrementSeed = -1;
-                this.columnCodigoProduto.AutoIncrementStep = -1;
-                this.columnCodigoProduto.AllowDBNull = false;
-                this.columnCodigoProduto.ReadOnly = true;
-                this.columnCodigoProduto.Unique = true;
+                                this.columnID}, true));
                 this.columnQuantidade.AllowDBNull = false;
                 this.columnDataEntrada.AllowDBNull = false;
                 this.columnDataVencimento.AllowDBNull = false;
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnID.Unique = true;
+                this.columnNomeProduto.AllowDBNull = false;
+                this.columnNomeProduto.MaxLength = 255;
+                this.columnNome_Marca.AllowDBNull = false;
+                this.columnNome_Marca.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2164,17 +2196,6 @@ namespace EstoqueEsteticaSenac {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int CodigoProduto {
-                get {
-                    return ((int)(this[this.tableEntradaEstoque.CodigoProdutoColumn]));
-                }
-                set {
-                    this[this.tableEntradaEstoque.CodigoProdutoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int Quantidade {
                 get {
                     return ((int)(this[this.tableEntradaEstoque.QuantidadeColumn]));
@@ -2203,6 +2224,39 @@ namespace EstoqueEsteticaSenac {
                 }
                 set {
                     this[this.tableEntradaEstoque.DataVencimentoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int ID {
+                get {
+                    return ((int)(this[this.tableEntradaEstoque.IDColumn]));
+                }
+                set {
+                    this[this.tableEntradaEstoque.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string NomeProduto {
+                get {
+                    return ((string)(this[this.tableEntradaEstoque.NomeProdutoColumn]));
+                }
+                set {
+                    this[this.tableEntradaEstoque.NomeProdutoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Nome_Marca {
+                get {
+                    return ((string)(this[this.tableEntradaEstoque.Nome_MarcaColumn]));
+                }
+                set {
+                    this[this.tableEntradaEstoque.Nome_MarcaColumn] = value;
                 }
             }
         }
@@ -3159,10 +3213,12 @@ SELECT id, nome, email, login, senha, administrador FROM usuarios WHERE (id = @i
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "EntradaEstoque";
-            tableMapping.ColumnMappings.Add("CodigoProduto", "CodigoProduto");
             tableMapping.ColumnMappings.Add("Quantidade", "Quantidade");
             tableMapping.ColumnMappings.Add("DataEntrada", "DataEntrada");
             tableMapping.ColumnMappings.Add("DataVencimento", "DataVencimento");
+            tableMapping.ColumnMappings.Add("ID", "ID");
+            tableMapping.ColumnMappings.Add("NomeProduto", "NomeProduto");
+            tableMapping.ColumnMappings.Add("Nome_Marca", "Nome_Marca");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -3210,8 +3266,10 @@ SELECT CodigoProduto, Quantidade, DataEntrada, DataVencimento FROM EntradaEstoqu
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT CodigoProduto, Quantidade, DataEntrada, DataVencimento FROM dbo.EntradaEst" +
-                "oque";
+            this._commandCollection[0].CommandText = @"SELECT        EntradaEstoque.ID, EntradaEstoque.DataEntrada, Produtos.NomeProduto, Marca.Nome_Marca, EntradaEstoque.Quantidade, EntradaEstoque.DataVencimento
+FROM            EntradaEstoque INNER JOIN
+                         Marca ON EntradaEstoque.ID_Marca = Marca.ID_Marca INNER JOIN
+                         Produtos ON EntradaEstoque.ID_Produto = Produtos.ID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3344,14 +3402,6 @@ SELECT CodigoProduto, Quantidade, DataEntrada, DataVencimento FROM EntradaEstoqu
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Quantidade, int DataEntrada, int DataVencimento, int Original_CodigoProduto, int Original_Quantidade, int Original_DataEntrada, int Original_DataVencimento) {
-            return this.Update(Quantidade, DataEntrada, DataVencimento, Original_CodigoProduto, Original_Quantidade, Original_DataEntrada, Original_DataVencimento, Original_CodigoProduto);
         }
     }
     

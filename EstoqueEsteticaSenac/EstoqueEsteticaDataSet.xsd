@@ -86,7 +86,7 @@ SELECT id, nome, email, login, senha, administrador FROM usuarios WHERE (id = @i
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EntradaEstoqueTableAdapter" GeneratorDataComponentClassName="EntradaEstoqueTableAdapter" Name="EntradaEstoque" UserDataComponentName="EntradaEstoqueTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="EstoqueEsteticaConnectionString (Settings)" DbObjectName="estoqueestetica.dbo.EntradaEstoque" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="EstoqueEsteticaConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[EntradaEstoque] WHERE (([CodigoProduto] = @Original_CodigoProduto) AND ([Quantidade] = @Original_Quantidade) AND ([DataEntrada] = @Original_DataEntrada) AND ([DataVencimento] = @Original_DataVencimento))</CommandText>
@@ -111,7 +111,10 @@ SELECT CodigoProduto, Quantidade, DataEntrada, DataVencimento FROM EntradaEstoqu
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT CodigoProduto, Quantidade, DataEntrada, DataVencimento FROM dbo.EntradaEstoque</CommandText>
+                    <CommandText>SELECT        EntradaEstoque.ID, EntradaEstoque.DataEntrada, Produtos.NomeProduto, Marca.Nome_Marca, EntradaEstoque.Quantidade, EntradaEstoque.DataVencimento
+FROM            EntradaEstoque INNER JOIN
+                         Marca ON EntradaEstoque.ID_Marca = Marca.ID_Marca INNER JOIN
+                         Produtos ON EntradaEstoque.ID_Produto = Produtos.ID</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -134,10 +137,12 @@ SELECT CodigoProduto, Quantidade, DataEntrada, DataVencimento FROM EntradaEstoqu
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="CodigoProduto" DataSetColumn="CodigoProduto" />
               <Mapping SourceColumn="Quantidade" DataSetColumn="Quantidade" />
               <Mapping SourceColumn="DataEntrada" DataSetColumn="DataEntrada" />
               <Mapping SourceColumn="DataVencimento" DataSetColumn="DataVencimento" />
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="NomeProduto" DataSetColumn="NomeProduto" />
+              <Mapping SourceColumn="Nome_Marca" DataSetColumn="Nome_Marca" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -282,7 +287,7 @@ SELECT ID_Marca, Nome_Marca, Observacao_Marca FROM Marca WHERE (ID_Marca = @ID_M
   <xs:element name="EstoqueEsteticaDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="EstoqueEsteticaDataSet" msprop:Generator_UserDSName="EstoqueEsteticaDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="usuarios" msprop:Generator_TableClassName="usuariosDataTable" msprop:Generator_TableVarName="tableusuarios" msprop:Generator_TablePropName="usuarios" msprop:Generator_RowDeletingName="usuariosRowDeleting" msprop:Generator_RowChangingName="usuariosRowChanging" msprop:Generator_RowEvHandlerName="usuariosRowChangeEventHandler" msprop:Generator_RowDeletedName="usuariosRowDeleted" msprop:Generator_UserTableName="usuarios" msprop:Generator_RowChangedName="usuariosRowChanged" msprop:Generator_RowEvArgName="usuariosRowChangeEvent" msprop:Generator_RowClassName="usuariosRow">
+        <xs:element name="usuarios" msprop:Generator_TableClassName="usuariosDataTable" msprop:Generator_TableVarName="tableusuarios" msprop:Generator_RowChangedName="usuariosRowChanged" msprop:Generator_TablePropName="usuarios" msprop:Generator_RowDeletingName="usuariosRowDeleting" msprop:Generator_RowChangingName="usuariosRowChanging" msprop:Generator_RowEvHandlerName="usuariosRowChangeEventHandler" msprop:Generator_RowDeletedName="usuariosRowDeleted" msprop:Generator_RowClassName="usuariosRow" msprop:Generator_UserTableName="usuarios" msprop:Generator_RowEvArgName="usuariosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -324,17 +329,31 @@ SELECT ID_Marca, Nome_Marca, Observacao_Marca FROM Marca WHERE (ID_Marca = @ID_M
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="EntradaEstoque" msprop:Generator_TableClassName="EntradaEstoqueDataTable" msprop:Generator_TableVarName="tableEntradaEstoque" msprop:Generator_RowChangedName="EntradaEstoqueRowChanged" msprop:Generator_TablePropName="EntradaEstoque" msprop:Generator_RowDeletingName="EntradaEstoqueRowDeleting" msprop:Generator_RowChangingName="EntradaEstoqueRowChanging" msprop:Generator_RowEvHandlerName="EntradaEstoqueRowChangeEventHandler" msprop:Generator_RowDeletedName="EntradaEstoqueRowDeleted" msprop:Generator_RowClassName="EntradaEstoqueRow" msprop:Generator_UserTableName="EntradaEstoque" msprop:Generator_RowEvArgName="EntradaEstoqueRowChangeEvent">
+        <xs:element name="EntradaEstoque" msprop:Generator_TableClassName="EntradaEstoqueDataTable" msprop:Generator_TableVarName="tableEntradaEstoque" msprop:Generator_TablePropName="EntradaEstoque" msprop:Generator_RowDeletingName="EntradaEstoqueRowDeleting" msprop:Generator_RowChangingName="EntradaEstoqueRowChanging" msprop:Generator_RowEvHandlerName="EntradaEstoqueRowChangeEventHandler" msprop:Generator_RowDeletedName="EntradaEstoqueRowDeleted" msprop:Generator_UserTableName="EntradaEstoque" msprop:Generator_RowChangedName="EntradaEstoqueRowChanged" msprop:Generator_RowEvArgName="EntradaEstoqueRowChangeEvent" msprop:Generator_RowClassName="EntradaEstoqueRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="CodigoProduto" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnCodigoProduto" msprop:Generator_ColumnPropNameInRow="CodigoProduto" msprop:Generator_ColumnPropNameInTable="CodigoProdutoColumn" msprop:Generator_UserColumnName="CodigoProduto" type="xs:int" />
               <xs:element name="Quantidade" msprop:Generator_ColumnVarNameInTable="columnQuantidade" msprop:Generator_ColumnPropNameInRow="Quantidade" msprop:Generator_ColumnPropNameInTable="QuantidadeColumn" msprop:Generator_UserColumnName="Quantidade" type="xs:int" />
               <xs:element name="DataEntrada" msprop:Generator_ColumnVarNameInTable="columnDataEntrada" msprop:Generator_ColumnPropNameInRow="DataEntrada" msprop:Generator_ColumnPropNameInTable="DataEntradaColumn" msprop:Generator_UserColumnName="DataEntrada" type="xs:int" />
               <xs:element name="DataVencimento" msprop:Generator_ColumnVarNameInTable="columnDataVencimento" msprop:Generator_ColumnPropNameInRow="DataVencimento" msprop:Generator_ColumnPropNameInTable="DataVencimentoColumn" msprop:Generator_UserColumnName="DataVencimento" type="xs:int" />
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="NomeProduto" msprop:Generator_ColumnVarNameInTable="columnNomeProduto" msprop:Generator_ColumnPropNameInRow="NomeProduto" msprop:Generator_ColumnPropNameInTable="NomeProdutoColumn" msprop:Generator_UserColumnName="NomeProduto">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nome_Marca" msprop:Generator_ColumnVarNameInTable="columnNome_Marca" msprop:Generator_ColumnPropNameInRow="Nome_Marca" msprop:Generator_ColumnPropNameInTable="Nome_MarcaColumn" msprop:Generator_UserColumnName="Nome_Marca">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SaidaEstoque" msprop:Generator_TableClassName="SaidaEstoqueDataTable" msprop:Generator_TableVarName="tableSaidaEstoque" msprop:Generator_RowChangedName="SaidaEstoqueRowChanged" msprop:Generator_TablePropName="SaidaEstoque" msprop:Generator_RowDeletingName="SaidaEstoqueRowDeleting" msprop:Generator_RowChangingName="SaidaEstoqueRowChanging" msprop:Generator_RowEvHandlerName="SaidaEstoqueRowChangeEventHandler" msprop:Generator_RowDeletedName="SaidaEstoqueRowDeleted" msprop:Generator_RowClassName="SaidaEstoqueRow" msprop:Generator_UserTableName="SaidaEstoque" msprop:Generator_RowEvArgName="SaidaEstoqueRowChangeEvent">
+        <xs:element name="SaidaEstoque" msprop:Generator_TableClassName="SaidaEstoqueDataTable" msprop:Generator_TableVarName="tableSaidaEstoque" msprop:Generator_TablePropName="SaidaEstoque" msprop:Generator_RowDeletingName="SaidaEstoqueRowDeleting" msprop:Generator_RowChangingName="SaidaEstoqueRowChanging" msprop:Generator_RowEvHandlerName="SaidaEstoqueRowChangeEventHandler" msprop:Generator_RowDeletedName="SaidaEstoqueRowDeleted" msprop:Generator_UserTableName="SaidaEstoque" msprop:Generator_RowChangedName="SaidaEstoqueRowChanged" msprop:Generator_RowEvArgName="SaidaEstoqueRowChangeEvent" msprop:Generator_RowClassName="SaidaEstoqueRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CodigoProduto" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnCodigoProduto" msprop:Generator_ColumnPropNameInRow="CodigoProduto" msprop:Generator_ColumnPropNameInTable="CodigoProdutoColumn" msprop:Generator_UserColumnName="CodigoProduto" type="xs:int" />
@@ -344,7 +363,7 @@ SELECT ID_Marca, Nome_Marca, Observacao_Marca FROM Marca WHERE (ID_Marca = @ID_M
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Produtos" msprop:Generator_TableClassName="ProdutosDataTable" msprop:Generator_TableVarName="tableProdutos" msprop:Generator_RowChangedName="ProdutosRowChanged" msprop:Generator_TablePropName="Produtos" msprop:Generator_RowDeletingName="ProdutosRowDeleting" msprop:Generator_RowChangingName="ProdutosRowChanging" msprop:Generator_RowEvHandlerName="ProdutosRowChangeEventHandler" msprop:Generator_RowDeletedName="ProdutosRowDeleted" msprop:Generator_RowClassName="ProdutosRow" msprop:Generator_UserTableName="Produtos" msprop:Generator_RowEvArgName="ProdutosRowChangeEvent">
+        <xs:element name="Produtos" msprop:Generator_TableClassName="ProdutosDataTable" msprop:Generator_TableVarName="tableProdutos" msprop:Generator_TablePropName="Produtos" msprop:Generator_RowDeletingName="ProdutosRowDeleting" msprop:Generator_RowChangingName="ProdutosRowChanging" msprop:Generator_RowEvHandlerName="ProdutosRowChangeEventHandler" msprop:Generator_RowDeletedName="ProdutosRowDeleted" msprop:Generator_UserTableName="Produtos" msprop:Generator_RowChangedName="ProdutosRowChanged" msprop:Generator_RowEvArgName="ProdutosRowChangeEvent" msprop:Generator_RowClassName="ProdutosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -379,7 +398,7 @@ SELECT ID_Marca, Nome_Marca, Observacao_Marca FROM Marca WHERE (ID_Marca = @ID_M
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Marca" msprop:Generator_TableClassName="MarcaDataTable" msprop:Generator_TableVarName="tableMarca" msprop:Generator_RowChangedName="MarcaRowChanged" msprop:Generator_TablePropName="Marca" msprop:Generator_RowDeletingName="MarcaRowDeleting" msprop:Generator_RowChangingName="MarcaRowChanging" msprop:Generator_RowEvHandlerName="MarcaRowChangeEventHandler" msprop:Generator_RowDeletedName="MarcaRowDeleted" msprop:Generator_RowClassName="MarcaRow" msprop:Generator_UserTableName="Marca" msprop:Generator_RowEvArgName="MarcaRowChangeEvent">
+        <xs:element name="Marca" msprop:Generator_TableClassName="MarcaDataTable" msprop:Generator_TableVarName="tableMarca" msprop:Generator_TablePropName="Marca" msprop:Generator_RowDeletingName="MarcaRowDeleting" msprop:Generator_RowChangingName="MarcaRowChanging" msprop:Generator_RowEvHandlerName="MarcaRowChangeEventHandler" msprop:Generator_RowDeletedName="MarcaRowDeleted" msprop:Generator_UserTableName="Marca" msprop:Generator_RowChangedName="MarcaRowChanged" msprop:Generator_RowEvArgName="MarcaRowChangeEvent" msprop:Generator_RowClassName="MarcaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID_Marca" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID_Marca" msprop:Generator_ColumnPropNameInRow="ID_Marca" msprop:Generator_ColumnPropNameInTable="ID_MarcaColumn" msprop:Generator_UserColumnName="ID_Marca" type="xs:short" />
@@ -408,7 +427,7 @@ SELECT ID_Marca, Nome_Marca, Observacao_Marca FROM Marca WHERE (ID_Marca = @ID_M
     </xs:unique>
     <xs:unique name="EntradaEstoque_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:EntradaEstoque" />
-      <xs:field xpath="mstns:CodigoProduto" />
+      <xs:field xpath="mstns:ID" />
     </xs:unique>
     <xs:unique name="SaidaEstoque_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:SaidaEstoque" />

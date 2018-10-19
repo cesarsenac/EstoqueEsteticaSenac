@@ -21,9 +21,13 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
 
         private void FormEntradaProduto_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.EntradaEstoque' table. You can move, or remove it, as needed.
+            this.entradaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.EntradaEstoque);
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.EntradaEstoque' table. You can move, or remove it, as needed.
+            this.entradaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.EntradaEstoque);
 
 
-            
+
         }
 
 
@@ -47,15 +51,16 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                 maskedTextBoxVencimento.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
                 string vencimento = maskedTextBoxVencimento.Text;
 
-                MessageBox.Show("Codigo: " + textBoxCodigoProduto.Text + "\n Quantidade: " + textBoxQuantidade.Text + "\n Entrada: " + maskedTextBoxDataEntrada.Text + " \n Vencimento: " + maskedTextBoxVencimento.Text);
-                bool resultadoClasse = ex.Inserir(Convert.ToInt32(textBoxQuantidade.Text), Convert.ToInt32(dataEntrada), Convert.ToInt32(vencimento));
+                int resultadoIDproduto = ex.BuscaIdProduto(textBoxCodigoBarras.Text);
+                int resultadoIDmarca = ex.BuscaIdMarca(textBoxMarca.Text);
+                bool resultadoClasse = ex.Inserir(Convert.ToInt32(textBoxQuantidade.Text), Convert.ToInt32(dataEntrada), Convert.ToInt32(vencimento), resultadoIDproduto, resultadoIDmarca);
 
                 if (resultadoClasse == true)
                 {
 
                     MessageBox.Show("Dados Inseridos com Sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    this.entradaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.EntradaEstoque);
 
-                    
                 }
                 else
                 {                   
@@ -96,7 +101,7 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                     textBoxQuantidade.Text = "";
                     maskedTextBoxDataEntrada.Text = "";
                     maskedTextBoxVencimento.Text = "";
-                    
+                    this.entradaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.EntradaEstoque);
                 }
                 else
                 {
@@ -132,8 +137,8 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                     textBoxQuantidade.Text = "";
                     maskedTextBoxDataEntrada.Text = "";
                     maskedTextBoxVencimento.Text = "";
+                    this.entradaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.EntradaEstoque);
 
-                    
                 }
                 else
                 {
@@ -152,14 +157,6 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
             if(resultado == DialogResult.Yes)
             this.Close();
         }
-             
-        //private void dataGridViewEntradaEstoque_CellClick(object sender, DataGridViewCellEventArgs e)
-        //{
-         //   textBoxCodigoProduto.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[0].Value.ToString();
-         //   textBoxQuantidade.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[1].Value.ToString();
-         //   maskedTextBoxDataEntrada.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[2].Value.ToString();
-         //   maskedTextBoxVencimento.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[3].Value.ToString();
-        //}
 
         private void textBoxQuantidade_KeyPress_1(object sender, KeyPressEventArgs e)
         {
@@ -194,20 +191,22 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                 textBoxCodigoProduto.Text = Convert.ToString(resultadoID);
 
                    
-                 string Produto = ee.BuscaProduto(textBoxCodigoBarras.Text);
+                 string Produto = ee.BuscaNomeProduto(textBoxCodigoBarras.Text);
                  textBoxProduto.Text = Produto;
 
-                 string marca = ee.BuscaMarca(textBoxCodigoBarras.Text);
+                 string marca = ee.BuscaNomeMarca(textBoxCodigoBarras.Text);
                  textBoxMarca.Text = marca;
 
                     textBoxQuantidade.Focus();
             }
         }
 
-        private void dataGridViewEntradaEstoque_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewEntradaEstoque_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-          
-
+            textBoxCodigoProduto.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[0].Value.ToString();
+            textBoxQuantidade.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[1].Value.ToString();
+            maskedTextBoxDataEntrada.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[2].Value.ToString();
+            maskedTextBoxVencimento.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[3].Value.ToString();
         }
     }
 }
