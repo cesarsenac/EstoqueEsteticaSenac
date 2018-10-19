@@ -46,12 +46,12 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                 if (resultadoClasse == true)
                 {
                     MessageBox.Show("Dados inseridos com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    //textBoxCodigoProduto.Text = "";
-                    //maskedTextBoxDataSaida.Text = "";
-                    //maskedTextBoxDataVencimento.Text = "";
+                    textBoxCodigoProduto.Text = "";
+                    maskedTextBoxDataSaida.Text = "";
+                    maskedTextBoxDataVencimento.Text = "";
 
-                    //Atualiza o datagridview
-                    
+                    this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
+
                 }
                 else
                 {
@@ -67,7 +67,8 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
             if (String.IsNullOrEmpty(textBoxCodigoProduto.Text) ||
                 String.IsNullOrEmpty(maskedTextBoxDataSaida.Text) ||
                 String.IsNullOrEmpty(maskedTextBoxDataVencimento.Text)
-             )
+                 
+               )
             {
                 MessageBox.Show("Não deixe os campos em branco", "AVISO", MessageBoxButtons.OK
                     , MessageBoxIcon.Information);
@@ -90,7 +91,9 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                     maskedTextBoxDataSaida.Text = "";
                     maskedTextBoxDataVencimento.Text = "";
 
-                    
+                    this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
+
+
                 }
                 else
                 {
@@ -110,18 +113,12 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
         {
             // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
             this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
-            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
-            this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
-            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
-            this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
-            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
-            this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
+
+
             textBoxCodigoBarras.Focus();
-            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
-            this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+            private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             textBoxCodigoProduto.Text = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
             textBoxQuantidade.Text = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
@@ -163,7 +160,9 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                     maskedTextBoxDataSaida.Text = "";
                     maskedTextBoxDataVencimento.Text = "";
 
-                    
+                    this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
+
+
                 }
                 else
                 {
@@ -172,25 +171,7 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
             }
         }
 
-        private void textBoxQuantidade_KeyPress(object sender, KeyPressEventArgs e)
-        {
-           if(e.KeyChar == 13)
-            {
-                if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
-                {
-                    MessageBox.Show("Não digite letras ou espaço.");
-                }
-                else
-                {
-                    maskedTextBoxDataSaida.Text = Convert.ToString(DateTime.Now);
-
-                    maskedTextBoxDataVencimento.Focus();
-
-                }
-            }
-        }
-
-        private void textBoxCodigoBarras_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBoxCodigoBarras_KeyPress_1(object sender, KeyPressEventArgs e)
         {
 
             if (e.KeyChar == 13) //Quando a tecla enter for presionada
@@ -217,7 +198,24 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
 
                 }
             }
+        }
 
+        private void textBoxQuantidade_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
+                {
+                    MessageBox.Show("Não digite letras ou espaço.");
+                }
+                else
+                {
+                    maskedTextBoxDataSaida.Text = Convert.ToString(DateTime.Now);
+
+                    maskedTextBoxDataVencimento.Focus();
+
+                }
+            }
         }
     }
 }

@@ -159,7 +159,7 @@
             this.textBoxQuantidade.Name = "textBoxQuantidade";
             this.textBoxQuantidade.Size = new System.Drawing.Size(171, 23);
             this.textBoxQuantidade.TabIndex = 9;
-            this.textBoxQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxQuantidade_KeyPress);
+            this.textBoxQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxQuantidade_KeyPress_1);
             // 
             // buttonInserir
             // 
@@ -181,7 +181,6 @@
             this.buttonAlterar.TabIndex = 12;
             this.buttonAlterar.Text = "Alterar";
             this.buttonAlterar.UseVisualStyleBackColor = true;
-            this.buttonAlterar.Click += new System.EventHandler(this.buttonAlterar_Click_1);
             // 
             // buttonExcluir
             // 
@@ -254,7 +253,6 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(636, 234);
             this.dataGridView1.TabIndex = 20;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // label8
             // 
@@ -274,7 +272,7 @@
             this.textBoxCodigoBarras.Name = "textBoxCodigoBarras";
             this.textBoxCodigoBarras.Size = new System.Drawing.Size(171, 26);
             this.textBoxCodigoBarras.TabIndex = 22;
-            this.textBoxCodigoBarras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCodigoBarras_KeyPress);
+            this.textBoxCodigoBarras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCodigoBarras_KeyPress_1);
             // 
             // estoqueEsteticaDataSet
             // 
