@@ -88,7 +88,7 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                 maskedTextBoxVencimento.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
                 string vencimento = maskedTextBoxVencimento.Text;
 
-                MessageBox.Show("Codigo: " + textBoxCodigoProduto.Text + "\n Quantidade: " + textBoxQuantidade.Text + "\n Entrada: " + maskedTextBoxDataEntrada.Text + " \n Vencimento: " + maskedTextBoxVencimento.Text);
+                
                 bool resultadoClasse = a.Alterar(Convert.ToInt32(textBoxCodigoProduto.Text),Convert.ToInt32(textBoxQuantidade.Text), Convert.ToInt32(dataEntrada), Convert.ToInt32(vencimento));
 
 
@@ -160,32 +160,30 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
 
         private void textBoxQuantidade_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == 13)
-            {
+        
                 if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
                 {
                     MessageBox.Show("Nao digite LETRAS ou ESPAÇOS...");
                     e.Handled = true;
                 }
-                else
+                else if(e.KeyChar == 13)
                 {
                     maskedTextBoxDataEntrada.Text = Convert.ToString(DateTime.Now);
 
-                    maskedTextBoxDataEntrada.Focus();
+                    maskedTextBoxVencimento.Focus();
                 }
-            }
+            
         }       
 
         private void textBoxCodigoBarras_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == 13)
             if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
             {
                 MessageBox.Show("Não digite letras ou espaço.");
                 e.Handled = true;
             }
-            else
-            {
+            else if (e.KeyChar == 13)
+            {  
                 EntradaEstoque ee = new EntradaEstoque();
                 int resultadoID = ee.BuscaIdProduto(textBoxCodigoBarras.Text);
                 textBoxCodigoProduto.Text = Convert.ToString(resultadoID);
@@ -197,16 +195,20 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                  string marca = ee.BuscaNomeMarca(textBoxCodigoBarras.Text);
                  textBoxMarca.Text = marca;
 
-                    textBoxQuantidade.Focus();
+                 textBoxQuantidade.Focus();
             }
         }
 
-        private void dataGridViewEntradaEstoque_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewEntradaEstoque_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             textBoxCodigoProduto.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[0].Value.ToString();
-            textBoxQuantidade.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[1].Value.ToString();
-            maskedTextBoxDataEntrada.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[2].Value.ToString();
-            maskedTextBoxVencimento.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[3].Value.ToString();
+            maskedTextBoxDataEntrada.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[1].Value.ToString();
+            textBoxProduto.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[2].Value.ToString();
+            textBoxMarca.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[3].Value.ToString();
+            textBoxQuantidade.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[4].Value.ToString();
+            maskedTextBoxVencimento.Text = this.dataGridViewEntradaEstoque.CurrentRow.Cells[5].Value.ToString();
         }
+
+
     }
 }

@@ -221,6 +221,7 @@
             this.maskedTextBoxDataEntrada.TabIndex = 17;
             this.maskedTextBoxDataEntrada.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.maskedTextBoxDataEntrada.ValidatingType = typeof(System.DateTime);
+
             // 
             // maskedTextBoxVencimento
             // 
@@ -269,6 +270,7 @@
             this.dataGridViewEntradaEstoque.ReadOnly = true;
             this.dataGridViewEntradaEstoque.Size = new System.Drawing.Size(697, 150);
             this.dataGridViewEntradaEstoque.TabIndex = 22;
+            this.dataGridViewEntradaEstoque.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEntradaEstoque_CellClick_1);
             // 
             // iDDataGridViewTextBoxColumn
             // 

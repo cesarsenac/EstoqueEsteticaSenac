@@ -41,10 +41,10 @@ namespace EstoqueEsteticaSenac.Classes
             }
         }
 
-        public bool Excluir(int CodigoProduto)
+        public bool Excluir(int ID)
         {
-            SqlConnection string_conexao = new SqlConnection(Properties.Resources.string_conexao);
-            SqlCommand cmd = new SqlCommand("delete from EntradaEstoque where CodigoProduto  = " + CodigoProduto, string_conexao);
+            SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
+            SqlCommand cmd = new SqlCommand("delete from EntradaEstoque where ID  = " + ID, string_conexao);
             try
             {
                 string_conexao.Open();
@@ -59,10 +59,10 @@ namespace EstoqueEsteticaSenac.Classes
             }
         }
 
-        public bool Alterar(int CodigoProduto, int Quantidade, int DataEntrada, int DataVencimento)
+        public bool Alterar(int ID, int Quantidade, int DataEntrada, int DataVencimento)
         {
-            SqlConnection string_conexao = new SqlConnection(Properties.Resources.string_conexao);
-            SqlCommand cmd = new SqlCommand("UPDATE EntradaEstoque SET Quantidade = '" + Quantidade + "', DataEntrada = '" + DataEntrada + "', DataVencimento = '" + DataVencimento + "' WHERE CodigoProduto = " + CodigoProduto, string_conexao);
+            SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
+            SqlCommand cmd = new SqlCommand("UPDATE EntradaEstoque SET Quantidade = '" + Quantidade + "', DataEntrada = '" + DataEntrada + "', DataVencimento = '" + DataVencimento + "' WHERE ID = " + ID, string_conexao);
             try
             {
                 string_conexao.Open();
