@@ -224,10 +224,10 @@ SELECT CodigoProduto, Quantidade, DataSaida, DataVencimento, ID_Marca, ID_Produt
             <MainSource>
               <DbSource ConnectionRef="EstoqueEsteticaConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        produtos.ID, produtos.NomeProduto, produtos.CodigoDeBarras, produtos.Observacoes, Marca.Nome_Marca
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        Produtos.ID, Produtos.NomeProduto, Produtos.CodigoDeBarras, Produtos.Observacoes, Marca.Nome_Marca
 FROM            Marca INNER JOIN
-                         produtos ON Marca.ID_Marca = produtos.ID_Marca</CommandText>
+                         Produtos ON Marca.ID_Marca = Produtos.ID_Marca</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>

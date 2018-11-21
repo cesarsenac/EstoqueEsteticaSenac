@@ -11,13 +11,13 @@ namespace EstoqueEsteticaSenac.Classes
 {
     class SaidaEstoque
     {
-        public bool Inserir(int Quantidade, int DataSaida, int DataVencimento)
+        public bool Inserir(int Quantidade, int DataSaida, int DataVencimento, int ID_Marca, int ID_Produto)
         {
             // 1) Preparando conexão.
             SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
 
             // 2) SQL que vai para o banco.
-            SqlCommand cmd = new SqlCommand("insert into SaidaEstoque (Quantidade, DataSaida, DataVencimento) values('" + Quantidade + "', '" + DataSaida + "', '" + DataVencimento + "')", string_conexao);
+            SqlCommand cmd = new SqlCommand("insert into SaidaEstoque (Quantidade, DataSaida, DataVencimento, ID_Marca, ID_Produto) values('" + Quantidade + "', '" + DataSaida + "', '" + DataVencimento + "', '" + ID_Marca + "', '" + ID_Produto + "')", string_conexao);
 
             try
             {
@@ -43,7 +43,7 @@ namespace EstoqueEsteticaSenac.Classes
 
         public bool Excluir(int CodigoProduto)
         {
-            SqlConnection string_conexao = new SqlConnection(Properties.Resources.string_conexao);
+            SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
             SqlCommand cmd = new SqlCommand("delete from SaidaEstoque where CodigoProduto = " + CodigoProduto, string_conexao);
 
             try
@@ -61,7 +61,7 @@ namespace EstoqueEsteticaSenac.Classes
         }
         public bool Alterar(int CodigoProduto, int Quantidade, int DataSaida, int DataVencimento)
         {
-            SqlConnection string_conexao = new SqlConnection(Properties.Resources.string_conexao);
+            SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
             SqlCommand cmd = new SqlCommand("update SaidaEstoque set Quantidade = '" + Quantidade + "', DataSaida = '" + DataSaida + "', DataVencimento = '" + DataVencimento + "' where CodigoProduto = " + CodigoProduto, string_conexao);
 
             try
@@ -92,12 +92,12 @@ namespace EstoqueEsteticaSenac.Classes
                 string_conexao.Open();
 
                 // 4) Executar query no banco.
-                int resultado = (int)cmd.ExecuteScalar();
+                int resultadoIDproduto = (int)cmd.ExecuteScalar();
 
                 // 5) Fechar conexão com o banco.
                 string_conexao.Close();
 
-                return resultado;
+                return resultadoIDproduto;
             }
             catch (Exception e)
             {
@@ -107,6 +107,38 @@ namespace EstoqueEsteticaSenac.Classes
                 //DateTime.Now; Pegar hora e data
             }
         }
+        
+
+        public int BuscaIdMarca(string marca)
+        {
+            // 1) Preparando conexão.
+            SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
+
+            // 2) SQL que vai para o banco.
+            SqlCommand cmd = new SqlCommand("SELECT ID_Marca FROM Marca WHERE Nome_Marca = '" + marca + "'", string_conexao);
+
+            try
+            {
+                // 3) Abrir a conexão com o banco.
+                string_conexao.Open();
+
+                // 4) Executar query no banco.
+                int resultadoIDproduto = Convert.ToInt32(cmd.ExecuteScalar());
+
+                // 5) Fechar conexão com o banco.
+                string_conexao.Close();
+
+                return resultadoIDproduto;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro ao gravar no banco de dados \n" + e.Message);
+                return 0;
+
+                //DateTime.Now; Pegar hora e data
+            }
+        }
+
         public string BuscaNomeProduto(string codigodebarras)
         {
             // 1) Preparando conexão.
@@ -161,6 +193,34 @@ namespace EstoqueEsteticaSenac.Classes
             catch (Exception e)
             {
                 MessageBox.Show("Erro ao gravar no banco de dados \n" + e.Message);
+                return "";
+            }
+        }
+        
+        public string BuscaDataVencimento (int codigo_produto)
+        {
+            // 1) Preparando conexão.
+            SqlConnection string_conexao = new SqlConnection(Properties.Settings.Default.string_conexao);
+
+            // 2) SQL que vai para o banco.
+            SqlCommand cmd = new SqlCommand("SELECT TOP 1 DataVencimento FROM EntradaEstoque WHERE ID_Produto = "+codigo_produto+" ORDER BY DataVencimento DESC", string_conexao);
+
+            try
+            {
+                // 3) Abrir a conexão com o banco.
+                string_conexao.Open();
+
+                // 4) Executar query no banco.
+                string produto = Convert.ToString(cmd.ExecuteScalar());
+
+                // 5) Fechar conexão com o banco.
+                string_conexao.Close();
+
+                return produto;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro ao gravar no banco de dados \n" + e);
                 return "";
             }
         }

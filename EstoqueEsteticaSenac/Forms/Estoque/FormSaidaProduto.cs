@@ -16,6 +16,15 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
         public FormSaidaProduto()
         {
             InitializeComponent();
+            textBoxCodigoBarras.Text = "";
+            
+        }
+
+        private void FormSaidaProduto_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
+            this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
+      
         }
 
         private void buttonInserir_Click(object sender, EventArgs e)
@@ -38,25 +47,28 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
 
                 maskedTextBoxDataVencimento.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
                 string DataVencimento = maskedTextBoxDataVencimento.Text;
+                int resultadoIDProduto = s.BuscaIdProduto(textBoxCodigoBarras.Text);
+                int resultadoIDMarca = s.BuscaIdMarca(textBoxMarca.Text);
 
-                MessageBox.Show("Codigo: " + textBoxCodigoProduto.Text + "\n Quantidade: " + textBoxQuantidade.Text + "\n Saida: " + maskedTextBoxDataSaida.Text + " \n Vencimento: " + maskedTextBoxDataVencimento.Text);
-                bool resultadoClasse = s.Inserir(Convert.ToInt32(textBoxQuantidade.Text), Convert.ToInt32(DataSaida), Convert.ToInt32(DataVencimento));
+                bool resultadoClasse = s.Inserir(Convert.ToInt32(textBoxQuantidade.Text), Convert.ToInt32(DataSaida), Convert.ToInt32(DataVencimento), resultadoIDMarca, resultadoIDProduto);
 
 
                 if (resultadoClasse == true)
                 {
                     MessageBox.Show("Dados inseridos com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     textBoxCodigoProduto.Text = "";
+                    textBoxCodigoBarras.Text = "";
+                    textBoxProduto.Text = "";
+                    textBoxMarca.Text = "";
+                    textBoxQuantidade.Text = "";
                     maskedTextBoxDataSaida.Text = "";
                     maskedTextBoxDataVencimento.Text = "";
-
                     this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
 
                 }
                 else
                 {
                     MessageBox.Show("Erro ao inserir os dados", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    System.Windows.Forms.MessageBox.Show("ERRO:\n" + e);
                 }
             }
 
@@ -65,6 +77,9 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
         private void buttonExcluir_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(textBoxCodigoProduto.Text) ||
+                String.IsNullOrEmpty(textBoxProduto.Text) ||
+                String.IsNullOrEmpty(textBoxMarca.Text) ||
+                String.IsNullOrEmpty(textBoxQuantidade.Text) ||
                 String.IsNullOrEmpty(maskedTextBoxDataSaida.Text) ||
                 String.IsNullOrEmpty(maskedTextBoxDataVencimento.Text)
                  
@@ -88,11 +103,12 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                 {
                     MessageBox.Show("Dados excluidos com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     textBoxCodigoProduto.Text = "";
+                    textBoxProduto.Text = "";
+                    textBoxMarca.Text = "";
+                    textBoxQuantidade.Text = "";
                     maskedTextBoxDataSaida.Text = "";
                     maskedTextBoxDataVencimento.Text = "";
-
                     this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
-
 
                 }
                 else
@@ -109,15 +125,6 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                 this.Close();
         }
 
-        private void FormSaidaProduto_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'estoqueEsteticaDataSet.SaidaEstoque' table. You can move, or remove it, as needed.
-            this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
-
-
-            textBoxCodigoBarras.Focus();
-        }
-
             private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             textBoxCodigoProduto.Text = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
@@ -126,50 +133,53 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
             maskedTextBoxDataVencimento.Text = this.dataGridView1.CurrentRow.Cells[3].Value.ToString();
             textBoxMarca.Text = this.dataGridView1.CurrentRow.Cells[4].Value.ToString();
             textBoxProduto.Text = this.dataGridView1.CurrentRow.Cells[5].Value.ToString();
+           
 
         }
 
-        private void buttonAlterar_Click_1(object sender, EventArgs e)
+        private void buttonAlterar_Click(object sender, EventArgs e)
         {
             if
-              (String.IsNullOrEmpty(textBoxQuantidade.Text) ||
-               String.IsNullOrEmpty(maskedTextBoxDataSaida.Text) ||
-               String.IsNullOrEmpty(maskedTextBoxDataVencimento.Text)
-              )
+               (
+                String.IsNullOrEmpty(textBoxQuantidade.Text) ||
+                String.IsNullOrEmpty(maskedTextBoxDataSaida.Text) ||
+                String.IsNullOrEmpty(maskedTextBoxDataVencimento.Text)
+                )
             {
-                MessageBox.Show("Preencha os campos em branco!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Preencha os campos em branco", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                SaidaEstoque s = new SaidaEstoque();
+                EntradaEstoque a = new EntradaEstoque();
                 maskedTextBoxDataSaida.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-                string DataSaida = maskedTextBoxDataSaida.Text;
+                string dataEntrada = maskedTextBoxDataSaida.Text;
 
                 maskedTextBoxDataVencimento.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-                string DataVencimento = maskedTextBoxDataVencimento.Text;
+                string vencimento = maskedTextBoxDataVencimento.Text;
 
-                MessageBox.Show("Codigo: " + textBoxCodigoProduto.Text + "\n Quantidade: " + textBoxQuantidade.Text + "\n Saida: " + maskedTextBoxDataSaida.Text + " \n Vencimento: " + maskedTextBoxDataVencimento.Text);
-                bool resultadoClasse = s.Alterar(Convert.ToInt32(textBoxCodigoProduto.Text), Convert.ToInt32(textBoxQuantidade.Text), Convert.ToInt32(DataSaida), Convert.ToInt32(DataVencimento));
+
+                bool resultadoClasse = a.Alterar(Convert.ToInt32(textBoxCodigoProduto.Text), Convert.ToInt32(textBoxQuantidade.Text), Convert.ToInt32(dataEntrada), Convert.ToInt32(vencimento));
+
 
                 if (resultadoClasse == true)
                 {
-                    MessageBox.Show("Dados alterados com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    MessageBox.Show("Dados alterados com Sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     textBoxProduto.Text = "";
                     textBoxMarca.Text = "";
                     textBoxQuantidade.Text = "";
                     maskedTextBoxDataSaida.Text = "";
                     maskedTextBoxDataVencimento.Text = "";
-
                     this.saidaEstoqueTableAdapter.Fill(this.estoqueEsteticaDataSet.SaidaEstoque);
-
-
                 }
                 else
                 {
                     MessageBox.Show("Erro ao alterar os dados", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
             }
         }
+
 
         private void textBoxCodigoBarras_KeyPress_1(object sender, KeyPressEventArgs e)
         {
@@ -210,10 +220,10 @@ namespace EstoqueEsteticaSenac.Forms.Estoque
                 }
                 else
                 {
+                    SaidaEstoque se = new SaidaEstoque();
                     maskedTextBoxDataSaida.Text = Convert.ToString(DateTime.Now);
-
-                    maskedTextBoxDataVencimento.Focus();
-
+                    maskedTextBoxDataVencimento.Text = se.BuscaDataVencimento(Convert.ToInt32(textBoxCodigoProduto.Text));
+                    buttonInserir.Focus();
                 }
             }
         }

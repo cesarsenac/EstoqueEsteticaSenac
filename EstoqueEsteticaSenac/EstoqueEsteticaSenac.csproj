@@ -61,6 +61,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EstoqueEsteticaDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="estoqueesteticaDataSet12.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>estoqueesteticaDataSet12.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="estoqueesteticaDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>estoqueesteticaDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="estoqueesteticaDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>estoqueesteticaDataSet3.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Cadastro\FormProduto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +197,39 @@
     </None>
     <None Include="EstoqueEsteticaDataSet.xss">
       <DependentUpon>EstoqueEsteticaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="estoqueesteticaDataSet12.xsc">
+      <DependentUpon>estoqueesteticaDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="estoqueesteticaDataSet12.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>estoqueesteticaDataSet12.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="estoqueesteticaDataSet12.xss">
+      <DependentUpon>estoqueesteticaDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="estoqueesteticaDataSet2.xsc">
+      <DependentUpon>estoqueesteticaDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="estoqueesteticaDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>estoqueesteticaDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="estoqueesteticaDataSet2.xss">
+      <DependentUpon>estoqueesteticaDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="estoqueesteticaDataSet3.xsc">
+      <DependentUpon>estoqueesteticaDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="estoqueesteticaDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>estoqueesteticaDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="estoqueesteticaDataSet3.xss">
+      <DependentUpon>estoqueesteticaDataSet3.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
