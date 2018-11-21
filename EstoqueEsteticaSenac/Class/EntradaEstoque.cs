@@ -54,7 +54,7 @@ namespace EstoqueEsteticaSenac.Classes
             }
             catch (Exception e)
             {
-                System.Windows.Forms.MessageBox.Show("ERRO:\n" + e);
+                System.Windows.Forms.MessageBox.Show("ERRO:\n" + e.Message);
                 return false;
             }
         }
@@ -180,7 +180,7 @@ namespace EstoqueEsteticaSenac.Classes
             }
             catch (Exception e)
             {
-                System.Windows.Forms.MessageBox.Show("" + e);
+                System.Windows.Forms.MessageBox.Show("" + e.Message);
                 return 0;
             }
 
