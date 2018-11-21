@@ -104,5 +104,11 @@ namespace EstoqueEsteticaSenac.Forms
             FormSaidaProduto fsp = new FormSaidaProduto();
             fsp.Show();
         }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Relatorios.FormRelatorioDeUsuarios fru = new Relatorios.FormRelatorioDeUsuarios();
+            fru.Show();
+        }
     }
 }

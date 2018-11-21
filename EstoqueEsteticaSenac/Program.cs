@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using EstoqueEsteticaSenac.Forms;
 using EstoqueEsteticaSenac.Forms.Cadastro;
+using EstoqueEsteticaSenac.Forms.Relatorios;
 
 
 namespace EstoqueEsteticaSenac
@@ -16,7 +17,7 @@ namespace EstoqueEsteticaSenac
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Splash());
+            Application.Run(new FormRelatorioDeUsuarios());
         }
     }
 }
